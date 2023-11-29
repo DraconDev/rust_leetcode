@@ -1,0 +1,2 @@
+mod leetcode;
+fn main() {}
