@@ -1,13 +1,17 @@
-pub fn remove_element(nums: &mut Vec<i32>, val: i32) -> i32 {
-    let mut right = nums.len() - 1;
-    let mut left = nums.len() - 1;
+use core::num;
 
-    while left != 0 {
-        if nums[left] == val {
-            nums[left] = nums[right];
-            right -= 1;
-        }
+pub fn remove_element(numbers: &mut Vec<i32>, val: i32) -> i32 {
+    let mut left = numbers.len();
+    let mut right = numbers.len() - 1;
+
+    while left > 0 {
         left -= 1;
+        if numbers[left] != val {
+            continue;
+        }
+        numbers[left] = numbers[right];
+        right -= 1;
+        numbers.pop();
     }
-    (right as i32) - 1
+    return numbers.len() as i32;
 }
