@@ -18,11 +18,9 @@ pub fn add_binary(a: String, b: String) -> String {
     if shorter.len() > longer.len() {
         std::mem::swap(&mut longer, &mut shorter);
     };
-    for i in 0..=longer.len() {
+    for i in 0..longer.len() {
         let mut sum = remained;
-        if longer.len() > i {
-            sum += longer.chars().nth(i).unwrap().to_digit(2).unwrap();
-        }
+        sum += longer.chars().nth(i).unwrap().to_digit(2).unwrap();
         if shorter.len() > i {
             sum += shorter.chars().nth(i).unwrap().to_digit(2).unwrap();
         }
@@ -32,6 +30,9 @@ pub fn add_binary(a: String, b: String) -> String {
             remained = 0;
         }
         result.push(char::from_digit(sum % 2, 2).unwrap());
+    }
+    if remained == 1 {
+        result.push('1');
     }
     return result.chars().rev().collect();
 }
