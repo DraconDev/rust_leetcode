@@ -5,15 +5,16 @@ use leetcode::*;
 
 fn main() {
     // let test = asteroid_collision::asteroid_collision(vec![-2,2,1,-2]);
-    let test = count_characters::count_characters(
-        vec![
-            "cat".to_string(),
-            "bt".to_string(),
-            "hat".to_string(),
-            "tree".to_string(),
-        ],
-        "atach".to_string(),
-    );
+    // let test = count_characters::count_characters(
+    //     vec![
+    //         "cat".to_string(),
+    //         "bt".to_string(),
+    //         "hat".to_string(),
+    //         "tree".to_string(),
+    //     ],
+    //     "atach".to_string(),
+    // );
+    let test = my_sqrt::my_sqrt(452345);
     // let v1 = vec![1, 2, 3];
 
     // for val in &v1 {
