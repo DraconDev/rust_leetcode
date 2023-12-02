@@ -14,7 +14,9 @@ fn main() {
     //     ],
     //     "atach".to_string(),
     // );
-    let test = my_sqrt::my_sqrt(452345);
+    // let test = my_sqrt::my_sqrt(452345);
+
+    let test = decode_string::decode_string("3[a]2[bc]".to_string());
     // let v1 = vec![1, 2, 3];
 
     // for val in &v1 {
