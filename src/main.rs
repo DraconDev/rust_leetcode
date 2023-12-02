@@ -4,8 +4,16 @@ mod tests;
 use leetcode::*;
 
 fn main() {
-    let test = asteroid_collision::asteroid_collision(vec![-2,2,1,-2]);
-
+    // let test = asteroid_collision::asteroid_collision(vec![-2,2,1,-2]);
+    let test = count_characters::count_characters(
+        vec![
+            "cat".to_string(),
+            "bt".to_string(),
+            "hat".to_string(),
+            "tree".to_string(),
+        ],
+        "atach".to_string(),
+    );
     // let v1 = vec![1, 2, 3];
 
     // for val in &v1 {
