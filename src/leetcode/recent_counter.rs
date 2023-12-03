@@ -31,10 +31,9 @@ impl RecentCounter {
 
     pub fn ping(&mut self, t: i32) -> i32 {
         self.pings.push_back(t);
-        // self = self.pings.partition_point(|&x| x < t - 3000);
-        while self.pings[0] < t - 3000 {
+        while *self.pings.front().unwrap() < t - 3000 {
             self.pings.pop_front();
         }
-        self.pings.len() as i32
+        self.pings.len() as _
     }
 }
