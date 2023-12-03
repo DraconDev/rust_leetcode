@@ -1,10 +1,15 @@
-mod leetcode;
 mod tests;
 
+mod leetcode;
 use leetcode::*;
 
 fn main() {
-    // let test = asteroid_collision::asteroid_collision(vec![-2,2,1,-2]);
+    // let test = asteroid_collision::asteroid_collision(vec![-2, 2, 1, -2]);
+    let test = min_time_to_visit_all_points::min_time_to_visit_all_points(vec![
+        vec![1, 1],
+        vec![3, 4],
+        vec![3, 2],
+    ] as Vec<Vec<i32>>);
     // let test = count_characters::count_characters(
     //     vec![
     //         "cat".to_string(),
@@ -16,7 +21,8 @@ fn main() {
     // );
     // let test = my_sqrt::my_sqrt(452345);
 
-    let test = decode_string::decode_string("3[a]2[bc]".to_string());
+    // let test = decode_string::decode_string("3[a]2[bc]".to_string());
+
     // let v1 = vec![1, 2, 3];
 
     // for val in &v1 {
