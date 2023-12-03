@@ -3,13 +3,18 @@ mod tests;
 mod leetcode;
 use leetcode::*;
 
+use crate::leetcode::recent_counter::RecentCounter;
+
 fn main() {
+    let mut recent_counter = RecentCounter::new();
+    let mut test = recent_counter.ping(15);
+    test = recent_counter.ping(11115);
     // let test = asteroid_collision::asteroid_collision(vec![-2, 2, 1, -2]);
-    let test = min_time_to_visit_all_points::min_time_to_visit_all_points(vec![
-        vec![1, 1],
-        vec![3, 4],
-        vec![3, 2],
-    ] as Vec<Vec<i32>>);
+    // let test = min_time_to_visit_all_points::min_time_to_visit_all_points(vec![
+    //     vec![1, 1],
+    //     vec![3, 4],
+    //     vec![3, 2],
+    // ] as Vec<Vec<i32>>);
     // let test = count_characters::count_characters(
     //     vec![
     //         "cat".to_string(),

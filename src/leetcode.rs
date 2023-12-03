@@ -9,5 +9,6 @@ pub mod min_time_to_visit_all_points;
 pub mod my_sqrt;
 pub mod remove_element;
 // mod *;
+pub mod recent_counter;
 
 pub use crate::*;
