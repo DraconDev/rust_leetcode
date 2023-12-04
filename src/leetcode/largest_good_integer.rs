@@ -16,3 +16,22 @@ pub fn largest_good_integer(num: String) -> String {
 
     return result.iter().collect();
 }
+
+// pub fn largest_good_integer(num: String) -> String {
+//     // Convert the string into a byte slice for more efficient comparison
+//     let bytes = num.as_bytes();
+//     let mut max_triplet = None;
+
+//     // Iterate over the byte slice with a window of size 3
+//     for window in bytes.windows(3) {
+//         if window[0] == window[1] && window[1] == window[2] {
+//             // Update max_triplet if the current triplet is greater
+//             max_triplet = Some(max_triplet.map_or(window, |max| std::cmp::max(max, window)));
+//         }
+//     }
+
+//     // If a max_triplet is found, convert it to a String, otherwise return an empty String
+//     max_triplet
+//         .map(|triplet| triplet.iter().map(|&c| c as char).collect())
+//         .unwrap_or_else(String::new)
+// }
