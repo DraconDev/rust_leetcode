@@ -10,5 +10,6 @@ pub mod my_sqrt;
 pub mod remove_element;
 // mod *;
 pub mod recent_counter;
+pub mod largest_good_integer;
 
 pub use crate::*;
