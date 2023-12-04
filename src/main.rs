@@ -10,7 +10,9 @@ fn main() {
     // let mut test = recent_counter.ping(15);
     // test = recent_counter.ping(11115);
 
-    let test = largest_good_integer::largest_good_integer("6111777133339".to_string());
+    // let test = largest_good_integer::largest_good_integer("6111777133339".to_string());
+
+    let test = predict_party_victory::predict_party_victory("DDRRRR".to_string());
     // let test = asteroid_collision::asteroid_collision(vec![-2, 2, 1, -2]);
     // let test = min_time_to_visit_all_points::min_time_to_visit_all_points(vec![
     //     vec![1, 1],
