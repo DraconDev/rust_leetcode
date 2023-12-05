@@ -14,7 +14,8 @@ fn main() {
 
     // let test = predict_party_victory::predict_party_victory("DDRRRR".to_string());
 
-    let test = is_happy::is_happy(19);
+    // let test = is_happy::is_happy(19);
+    let test = number_of_matches::number_of_matches(14);
     // let test = asteroid_collision::asteroid_collision(vec![-2, 2, 1, -2]);
     // let test = min_time_to_visit_all_points::min_time_to_visit_all_points(vec![
     //     vec![1, 1],

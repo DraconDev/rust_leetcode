@@ -11,6 +11,7 @@ pub mod remove_element;
 // mod *;
 pub mod is_happy;
 pub mod largest_good_integer;
+pub mod number_of_matches;
 pub mod predict_party_victory;
 pub mod recent_counter;
 
