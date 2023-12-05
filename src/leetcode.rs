@@ -9,6 +9,7 @@ pub mod min_time_to_visit_all_points;
 pub mod my_sqrt;
 pub mod remove_element;
 // mod *;
+pub mod delete_middle;
 pub mod is_happy;
 pub mod largest_good_integer;
 pub mod number_of_matches;
