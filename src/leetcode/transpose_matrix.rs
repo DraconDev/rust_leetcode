@@ -1,4 +1,8 @@
 pub fn transpose(matrix: Vec<Vec<i32>>) -> Vec<Vec<i32>> {
+    if matrix.is_empty() {
+        return Vec::new();
+    }
+
     let vert_len = matrix.len();
     let horizontal_len = matrix[0].len();
 
