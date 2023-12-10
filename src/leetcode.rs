@@ -12,11 +12,12 @@ pub mod remove_element;
 pub mod delete_middle;
 pub mod is_happy;
 pub mod largest_good_integer;
+pub mod largest_odd_number;
 pub mod number_of_matches;
 pub mod predict_party_victory;
 pub mod recent_counter;
 pub mod reverse_linked_list;
 pub mod solution;
-pub mod largest_odd_number;
+pub mod transpose_matrix;
 
 pub use crate::*;

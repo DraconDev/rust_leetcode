@@ -24,6 +24,24 @@ fn test_equal_pairs() {
     )
 }
 
+// test transpose_matrix
+#[test]
+fn test_transpose_matrix() {
+    // assert_eq!(
+    //     crate::leetcode::transpose_matrix::transpose(vec![
+    //         vec![1, 2, 3],
+    //         vec![4, 5, 6],
+    //         vec![7, 8, 9]
+    //     ]),
+    //     vec![vec![1, 4, 7], vec![2, 5, 8], vec![3, 6, 9]]
+    // );
+    // * test for [[1,2,3],[4,5,6]]
+    assert_eq!(
+        crate::leetcode::transpose_matrix::transpose(vec![vec![1, 2, 3], vec![4, 5, 6]]),
+        vec![vec![1, 4], vec![2, 5], vec![3, 6]]
+    );
+}
+
 // #[test]
 // fn test_bad_add() {
 //     // This assert would fire and test will fail.
