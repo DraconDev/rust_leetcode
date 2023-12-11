@@ -10,6 +10,7 @@ pub mod my_sqrt;
 pub mod remove_element;
 // mod *;
 pub mod delete_middle;
+pub mod find_special_integer;
 pub mod is_happy;
 pub mod largest_good_integer;
 pub mod largest_odd_number;

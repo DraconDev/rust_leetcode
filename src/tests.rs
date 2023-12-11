@@ -42,6 +42,16 @@ fn test_transpose_matrix() {
     );
 }
 
+#[test]
+fn test_find_special_integer() {
+    assert_eq!(
+        crate::leetcode::find_special_integer::find_special_integer(vec![
+            1, 2, 2, 6, 6, 6, 6, 7, 10
+        ]),
+        6
+    )
+}
+
 // #[test]
 // fn test_bad_add() {
 //     // This assert would fire and test will fail.
