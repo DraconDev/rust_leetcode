@@ -52,9 +52,11 @@ fn test_find_special_integer() {
     )
 }
 
-// #[test]
-// fn test_bad_add() {
-//     // This assert would fire and test will fail.
-//     // Please note, that private functions can be tested too!
-//     assert_eq!(bad_add(1, 2), 3);
-// }
+// test max max_product
+#[test]
+fn test_max_product() {
+    assert_eq!(
+        crate::leetcode::max_product::max_product(vec![2, 3, -2, 4]),
+        6
+    )
+}

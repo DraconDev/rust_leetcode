@@ -14,6 +14,7 @@ pub mod find_special_integer;
 pub mod is_happy;
 pub mod largest_good_integer;
 pub mod largest_odd_number;
+pub mod max_product;
 pub mod number_of_matches;
 pub mod predict_party_victory;
 pub mod recent_counter;
