@@ -63,7 +63,7 @@ fn test_max_product() {
 
 // test special special_position
 #[test]
-fn test_num_special() {
+fn test_special_position() {
     // assert_eq!(
     //     crate::leetcode::special_position::num_special(vec![
     //         vec![1, 0, 0],
@@ -73,7 +73,7 @@ fn test_num_special() {
     //     3
     // );
     assert_eq!(
-        crate::leetcode::special_position::num_special(vec![
+        crate::leetcode::special_position::special_position(vec![
             vec![1, 0, 0],
             vec![0, 0, 1],
             vec![1, 0, 0]

@@ -1,6 +1,6 @@
 use std::collections::HashMap;
 
-pub fn num_special(mat: Vec<Vec<i32>>) -> i32 {
+pub fn special_position(mat: Vec<Vec<i32>>) -> i32 {
     // make maps for x and y coords
     let mut x_map: HashMap<usize, Vec<usize>> = HashMap::new();
     let mut y_map: HashMap<usize, Vec<usize>> = HashMap::new();
