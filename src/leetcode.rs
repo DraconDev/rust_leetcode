@@ -22,5 +22,6 @@ pub mod reverse_linked_list;
 pub mod solution;
 pub mod special_position;
 pub mod transpose_matrix;
+pub mod binary_tree;
 
 pub use crate::*;
