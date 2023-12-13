@@ -20,6 +20,7 @@ pub mod predict_party_victory;
 pub mod recent_counter;
 pub mod reverse_linked_list;
 pub mod solution;
+pub mod special_position;
 pub mod transpose_matrix;
 
 pub use crate::*;
