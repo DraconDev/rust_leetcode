@@ -1,4 +1,4 @@
-use crate::*;
+use crate::{leetcode::binary_tree::build_tree, *};
 
 // use super::*;
 
@@ -80,4 +80,13 @@ fn test_special_position() {
         ]),
         1
     );
+}
+
+// test for longest zig zag
+#[test]
+fn test_longest_zig_zag() {
+    assert_eq!(
+        crate::leetcode::binary_tree::longest_zig_zag(build_tree()),
+        3
+    )
 }

@@ -55,5 +55,14 @@ pub fn build_tree() -> Option<Rc<RefCell<TreeNode>>> {
 }
 
 pub fn longest_zig_zag(root: Option<Rc<RefCell<TreeNode>>>) -> i32 {
-    3
+    fn dfs(n: &Option<Rc<RefCell<TreeNode>>>, l: i32, r: i32) -> i32 {
+        match n {
+            None => l.max(r),
+            Some(n) => {
+                let v = n.borrow();
+                dfs(&v.left, 0, l + 1).max(dfs(&v.right, r + 1, 0))
+            }
+        }
+    }
+    dfs(&root, 0, 0) - 1
 }
