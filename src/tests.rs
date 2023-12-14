@@ -105,3 +105,13 @@ fn test_ones_minus_zeros() {
         vec![vec![0, 0, 4], vec![0, 0, 4], vec![-2, -2, 2]]
     );
 }
+
+//  test lowest_common_ancestor
+#[test]
+fn test_lowest_common_ancestor() {
+    let tree = crate::leetcode::binary_tree::build_tree();
+    assert_eq!(
+        crate::leetcode::binary_tree::lowest_common_ancestor(tree, None, None),
+        None
+    )
+}

@@ -66,3 +66,72 @@ pub fn longest_zig_zag(root: Option<Rc<RefCell<TreeNode>>>) -> i32 {
     }
     dfs(&root, 0, 0) - 1
 }
+
+// pub fn lowest_common_ancestor(
+//     root: Option<Rc<RefCell<TreeNode>>>,
+//     p: Option<Rc<RefCell<TreeNode>>>,
+//     q: Option<Rc<RefCell<TreeNode>>>,
+// ) -> Option<Rc<RefCell<TreeNode>>> {
+//     fn dfs(
+//         n: &Option<Rc<RefCell<TreeNode>>>,
+//         p: &Option<Rc<RefCell<TreeNode>>>,
+//         q: &Option<Rc<RefCell<TreeNode>>>,
+//     ) -> Option<Rc<RefCell<TreeNode>>> {
+//         match n {
+//             None => None,
+//             Some(n) => {
+//                 let v = n.borrow();
+//                 if let (Some(p_node), Some(q_node)) = (p.as_ref(), q.as_ref()) {
+//                     let p_val = p_node.borrow().val;
+//                     let q_val = q_node.borrow().val;
+
+//                     if v.val > p_val && v.val > q_val {
+//                         dfs(&v.left, p, q)
+//                     } else if v.val < p_val && v.val < q_val {
+//                         dfs(&v.right, p, q)
+//                     } else {
+//                         Some(n.clone())
+//                     }
+//                 } else {
+//                     None
+//                 }
+//             }
+//         }
+//     }
+//     dfs(&root, &p, &q)
+// }
+
+pub fn lowest_common_ancestor(
+    root: Option<Rc<RefCell<TreeNode>>>,
+    p: Option<Rc<RefCell<TreeNode>>>,
+    q: Option<Rc<RefCell<TreeNode>>>,
+) -> Option<Rc<RefCell<TreeNode>>> {
+    if let (Some(rn), Some(pn), Some(qn)) = (&root, &p, &q) {
+        if rn.borrow().val == pn.borrow().val || rn.borrow().val == qn.borrow().val {
+            return root;
+        }
+
+        let left = Self::lowest_common_ancestor(
+            rn.borrow().left.as_ref().map(Rc::clone),
+            Some(Rc::clone(pn)),
+            Some(Rc::clone(qn)),
+        );
+
+        let right = Self::lowest_common_ancestor(
+            rn.borrow().right.as_ref().map(Rc::clone),
+            Some(Rc::clone(pn)),
+            Some(Rc::clone(qn)),
+        );
+
+        if left.is_some() && right.is_some() {
+            return root;
+        }
+
+        if left.is_some() {
+            return left;
+        }
+
+        return right;
+    }
+    None
+}
