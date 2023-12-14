@@ -90,3 +90,17 @@ fn test_longest_zig_zag() {
         3
     )
 }
+
+// test for ones minus zeros
+//  [[0,1,1],[1,0,1],[0,0,1]]
+#[test]
+fn test_ones_minus_zeros() {
+    assert_eq!(
+        crate::leetcode::ones_minus_zeros::ones_minus_zeros(vec![
+            vec![0, 1, 1],
+            vec![1, 0, 1],
+            vec![0, 0, 1]
+        ]),
+        vec![vec![0, 1, 1], vec![1, 0, 1], vec![0, 0, 1]]
+    );
+}
