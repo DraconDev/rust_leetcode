@@ -107,11 +107,26 @@ fn test_ones_minus_zeros() {
 }
 
 //  test lowest_common_ancestor
+// #[test]
+// fn test_lowest_common_ancestor() {
+//     let tree = crate::leetcode::binary_tree::build_tree();
+//     assert_eq!(
+//         crate::leetcode::binary_tree::lowest_common_ancestor(tree, None, None),
+//         None
+//     )
+// }
+
+// test for dest_city
+//  [["London","New York"],["New York","Lima"],["Lima","Sao Paulo"]]
+
 #[test]
-fn test_lowest_common_ancestor() {
-    let tree = crate::leetcode::binary_tree::build_tree();
+fn test_dest_city() {
     assert_eq!(
-        crate::leetcode::binary_tree::lowest_common_ancestor(tree, None, None),
-        None
+        crate::leetcode::destination_city::dest_city(vec![
+            vec![String::from("London"), String::from("New York")],
+            vec![String::from("New York"), String::from("Lima")],
+            vec![String::from("Lima"), String::from("Sao Paulo")]
+        ]),
+        "Sao Paulo".to_string()
     )
 }

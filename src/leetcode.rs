@@ -11,6 +11,7 @@ pub mod remove_element;
 // mod *;
 pub mod binary_tree;
 pub mod delete_middle;
+
 pub mod destination_city;
 pub mod find_special_integer;
 pub mod is_happy;
