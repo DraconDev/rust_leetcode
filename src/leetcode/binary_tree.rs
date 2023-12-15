@@ -101,37 +101,37 @@ pub fn longest_zig_zag(root: Option<Rc<RefCell<TreeNode>>>) -> i32 {
 //     dfs(&root, &p, &q)
 // }
 
-pub fn lowest_common_ancestor(
-    root: Option<Rc<RefCell<TreeNode>>>,
-    p: Option<Rc<RefCell<TreeNode>>>,
-    q: Option<Rc<RefCell<TreeNode>>>,
-) -> Option<Rc<RefCell<TreeNode>>> {
-    if let (Some(rn), Some(pn), Some(qn)) = (&root, &p, &q) {
-        if rn.borrow().val == pn.borrow().val || rn.borrow().val == qn.borrow().val {
-            return root;
-        }
+// pub fn lowest_common_ancestor(
+//     root: Option<Rc<RefCell<TreeNode>>>,
+//     p: Option<Rc<RefCell<TreeNode>>>,
+//     q: Option<Rc<RefCell<TreeNode>>>,
+// ) -> Option<Rc<RefCell<TreeNode>>> {
+//     if let (Some(rn), Some(pn), Some(qn)) = (&root, &p, &q) {
+//         if rn.borrow().val == pn.borrow().val || rn.borrow().val == qn.borrow().val {
+//             return root;
+//         }
 
-        let left = Self::lowest_common_ancestor(
-            rn.borrow().left.as_ref().map(Rc::clone),
-            Some(Rc::clone(pn)),
-            Some(Rc::clone(qn)),
-        );
+//         let left = Self::lowest_common_ancestor(
+//             rn.borrow().left.as_ref().map(Rc::clone),
+//             Some(Rc::clone(pn)),
+//             Some(Rc::clone(qn)),
+//         );
 
-        let right = Self::lowest_common_ancestor(
-            rn.borrow().right.as_ref().map(Rc::clone),
-            Some(Rc::clone(pn)),
-            Some(Rc::clone(qn)),
-        );
+//         let right = Self::lowest_common_ancestor(
+//             rn.borrow().right.as_ref().map(Rc::clone),
+//             Some(Rc::clone(pn)),
+//             Some(Rc::clone(qn)),
+//         );
 
-        if left.is_some() && right.is_some() {
-            return root;
-        }
+//         if left.is_some() && right.is_some() {
+//             return root;
+//         }
 
-        if left.is_some() {
-            return left;
-        }
+//         if left.is_some() {
+//             return left;
+//         }
 
-        return right;
-    }
-    None
-}
+//         return right;
+//     }
+//     None
+// }
