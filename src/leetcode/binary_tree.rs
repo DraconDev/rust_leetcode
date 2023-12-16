@@ -1,4 +1,5 @@
 use std::cell::RefCell;
+use std::collections::{HashMap, VecDeque};
 use std::rc::Rc;
 
 #[derive(Debug, PartialEq, Eq)]
@@ -135,3 +136,32 @@ pub fn longest_zig_zag(root: Option<Rc<RefCell<TreeNode>>>) -> i32 {
 //     }
 //     None
 // }
+
+pub fn max_level_sum(root: Option<Rc<RefCell<TreeNode>>>) -> i32 {
+    let mut queue = VecDeque::<Option<(Rc<RefCell<TreeNode>>, i32)>>::new();
+
+    let mut sums = HashMap::new();
+
+    queue.push_back(root.map(|r| (Rc::clone(&r), 1)));
+
+    fn bfs(queue: &mut VecDeque<Option<(Rc<RefCell<TreeNode>>, i32)>>, sums: &mut HashMap<i32, i32>) {
+        while let Some(Some((n, l))) = queue.pop_front() {
+            let v = n.borrow();
+
+            sums.entry(l).and_modify(|e| *e += v.val).or_insert(v.val);
+
+            if let Some(left) = v.left.clone() {
+                queue.push_back(Some((left, l + 1)));
+            }
+
+            if let Some(right) = v.right.clone() {
+                queue.push_back(Some((right, l + 1)));
+            }
+        }
+    }
+
+    bfs(&mut queue, &mut sums);
+
+    let max_sum = sums.values().max().unwrap_or(&0).clone();
+    max_sum
+}
