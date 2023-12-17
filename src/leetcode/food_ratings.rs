@@ -19,31 +19,31 @@ impl FoodRatings {
         let mut food_map: HashMap<String, FoodInfo> = HashMap::new();
         let mut cuisine_map: HashMap<String, CuisineInfo> = HashMap::new();
         for (i, food) in foods.into_iter().enumerate() {
-            if !cuisine_map.contains_key(&cuisines[i]) {
+            let cuisine = cuisines[i].clone();
+            let food_clone = food.clone();
+            let rating = ratings[i];
+
+            if let Some(cuisine_info) = cuisine_map.get_mut(&cuisine) {
+                if rating > cuisine_info.highest_rating {
+                    cuisine_info.highest_rating = rating;
+                    cuisine_info.highest_rated = food_clone;
+                } else if rating == cuisine_info.highest_rating && food < cuisine_info.highest_rated
+                {
+                    cuisine_info.highest_rated = food_clone;
+                }
+            } else {
                 cuisine_map.insert(
-                    cuisines[i].clone(),
+                    cuisine.clone(),
                     CuisineInfo {
-                        highest_rated: food.clone(),
-                        highest_rating: ratings[i].clone(),
+                        highest_rated: food_clone,
+                        highest_rating: rating,
                     },
                 );
-            } else {
-                if ratings[i] > cuisine_map.get(&cuisines[i]).unwrap().highest_rating {
-                    cuisine_map.get_mut(&cuisines[i]).unwrap().highest_rated = food.clone();
-                    cuisine_map.get_mut(&cuisines[i]).unwrap().highest_rating = ratings[i];
-                } else if ratings[i] == cuisine_map.get(&cuisines[i]).unwrap().highest_rating
-                    && food < cuisine_map.get(&cuisines[i]).unwrap().highest_rated
-                {
-                    cuisine_map.get_mut(&cuisines[i]).unwrap().highest_rated = food.clone();
-                }
             }
 
-            let info = FoodInfo {
-                cuisine: cuisines[i].clone(),
-                rating: ratings[i],
-            };
+            let info = FoodInfo { cuisine, rating };
 
-            food_map.insert(food.clone(), info);
+            food_map.insert(food, info);
         }
         FoodRatings {
             food_map,
