@@ -130,3 +130,23 @@ fn test_dest_city() {
         "Sao Paulo".to_string()
     )
 }
+
+#[test]
+fn test_food_ratings() {
+    let mut food_ratings = crate::leetcode::food_ratings::FoodRatings::new(
+        vec![
+            "Shogun".to_string(),
+            "Tapioca Express".to_string(),
+            "Burger King".to_string(),
+        ],
+        vec![
+            "Piatti".to_string(),
+            "KFC".to_string(),
+            "Shogun".to_string(),
+        ],
+        vec![3, 2, 3],
+    );
+    food_ratings.change_rating("Shogun".to_string(), 1);
+    food_ratings.change_rating("Tapioca Express".to_string(), 2);
+    food_ratings.change_rating("Burger King".to_string(), 3);
+}

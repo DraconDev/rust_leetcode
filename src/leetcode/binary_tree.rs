@@ -144,7 +144,10 @@ pub fn max_level_sum(root: Option<Rc<RefCell<TreeNode>>>) -> i32 {
 
     queue.push_back(root.map(|r| (Rc::clone(&r), 1)));
 
-    fn bfs(queue: &mut VecDeque<Option<(Rc<RefCell<TreeNode>>, i32)>>, sums: &mut HashMap<i32, i32>) {
+    fn bfs(
+        queue: &mut VecDeque<Option<(Rc<RefCell<TreeNode>>, i32)>>,
+        sums: &mut HashMap<i32, i32>,
+    ) {
         while let Some(Some((n, l))) = queue.pop_front() {
             let v = n.borrow();
 
