@@ -27,19 +27,21 @@ impl FoodRatings {
 
     pub fn highest_rated(&self, cuisine: String) -> String {
         let mut max_rating = 0;
-        let mut max_food = String::new();
+        let mut max_food: Option<&String> = None;
         for (food, info) in self.food_map.iter() {
             if info.cuisine == cuisine {
                 if info.rating > max_rating {
                     max_rating = info.rating;
-                    max_food = food.to_string();
+                    max_food = Some(food);
                 } else if info.rating == max_rating {
-                    if food.chars().next() < max_food.chars().next() {
-                        max_food = food.to_string();
+                    if let Some(max) = max_food {
+                        if food < max {
+                            max_food = Some(food);
+                        }
                     }
                 }
             }
         }
-        max_food
+        max_food.map_or(String::new(), |f| f.clone())
     }
 }
