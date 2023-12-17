@@ -149,4 +149,7 @@ fn test_food_ratings() {
     food_ratings.change_rating("Shogun".to_string(), 1);
     food_ratings.change_rating("Tapioca Express".to_string(), 2);
     food_ratings.change_rating("Burger King".to_string(), 3);
+    // get highest_rated
+    food_ratings.highest_rated("Shogun".to_string());
+    
 }

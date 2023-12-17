@@ -12,12 +12,10 @@ impl FoodRatings {
     pub fn new(foods: Vec<String>, cuisines: Vec<String>, ratings: Vec<i32>) -> Self {
         let mut food_map = HashMap::new();
         for (i, food) in foods.into_iter().enumerate() {
-            // Create a FoodInfo object for each food item.
             let info = FoodInfo {
                 cuisine: cuisines[i].clone(),
                 rating: ratings[i],
             };
-            // Insert the food key and FoodInfo object into the HashMap.
             food_map.insert(food, info);
         }
         FoodRatings { food_map }
@@ -27,7 +25,7 @@ impl FoodRatings {
         self.food_map.get_mut(&food).unwrap().rating = new_rating;
     }
 
-    fn highest_rated(&self, cuisine: String) -> String {
+    pub fn highest_rated(&self, cuisine: String) -> String {
         let mut max_rating = 0;
         let mut max_food = String::new();
         for (food, info) in self.food_map.iter() {
@@ -35,6 +33,10 @@ impl FoodRatings {
                 if info.rating > max_rating {
                     max_rating = info.rating;
                     max_food = food.to_string();
+                } else if info.rating == max_rating {
+                    if food.chars().next() < max_food.chars().next() {
+                        max_food = food.to_string();
+                    }
                 }
             }
         }
