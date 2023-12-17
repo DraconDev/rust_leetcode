@@ -27,9 +27,10 @@ impl FoodRatings {
                 if rating > cuisine_info.highest_rating {
                     cuisine_info.highest_rating = rating;
                     cuisine_info.highest_rated = food_clone;
-                } else if rating == cuisine_info.highest_rating && food < cuisine_info.highest_rated
-                {
-                    cuisine_info.highest_rated = food_clone;
+                } else if rating == cuisine_info.highest_rating {
+                    if food.to_lowercase() < cuisine_info.highest_rated.to_lowercase() {
+                        cuisine_info.highest_rated = food_clone
+                    }
                 }
             } else {
                 cuisine_map.insert(
