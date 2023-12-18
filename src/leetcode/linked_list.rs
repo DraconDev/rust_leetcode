@@ -1,4 +1,7 @@
 pub fn delete_duplicates(head: Option<Box<ListNode>>) -> Option<Box<ListNode>> {
+    if head.is_none() {
+        return None;
+    }
     let mut head = head;
     let mut current = head.as_mut();
 
