@@ -187,3 +187,24 @@ pub fn search_bst(root: Option<Rc<RefCell<TreeNode>>>, val: i32) -> Option<Rc<Re
     }
     dfs(&root, val)
 }
+
+pub fn is_balanced(root: Option<Rc<RefCell<TreeNode>>>) -> bool {
+    fn dfs(root: &Option<Rc<RefCell<TreeNode>>>) -> (bool, i32) {
+        match root {
+            None => (true, 0), // An empty tree is balanced with a height of 0.
+            Some(n) => {
+                let v = n.borrow();
+                let (left_balanced, left_height) = dfs(&v.left);
+                let (right_balanced, right_height) = dfs(&v.right);
+
+                let balanced =
+                    left_balanced && right_balanced && (left_height - right_height).abs() <= 1;
+                let height = 1 + std::cmp::max(left_height, right_height);
+
+                (balanced, height)
+            }
+        }
+    }
+
+    dfs(&root).0 // We are only interested in the boolean indicating if the tree is balanced.
+}

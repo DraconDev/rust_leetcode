@@ -138,3 +138,12 @@ fn text_max_product_difference() {
         34
     )
 }
+
+// test is balanced
+#[test]
+fn test_is_balanced() {
+    assert_eq!(
+        crate::leetcode::binary_tree::is_balanced(build_tree()),
+        true
+    )
+}
