@@ -168,3 +168,22 @@ pub fn max_level_sum(root: Option<Rc<RefCell<TreeNode>>>) -> i32 {
     let max_sum = sums.values().max().unwrap_or(&0).clone();
     max_sum
 }
+
+pub fn search_bst(root: Option<Rc<RefCell<TreeNode>>>, val: i32) -> Option<Rc<RefCell<TreeNode>>> {
+    fn dfs(root: &Option<Rc<RefCell<TreeNode>>>, val: i32) -> Option<Rc<RefCell<TreeNode>>> {
+        match root {
+            None => None,
+            Some(n) => {
+                let v = n.borrow();
+                if v.val == val {
+                    Some(Rc::clone(n))
+                } else if v.val > val {
+                    dfs(&v.left, val)
+                } else {
+                    dfs(&v.right, val)
+                }
+            }
+        }
+    }
+    dfs(&root, val)
+}
