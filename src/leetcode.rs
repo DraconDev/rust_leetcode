@@ -29,5 +29,6 @@ pub mod solution;
 pub mod special_position;
 pub mod transpose_matrix;
 pub mod valid_anagram;
+pub mod max_difference;
 
 pub use crate::*;
