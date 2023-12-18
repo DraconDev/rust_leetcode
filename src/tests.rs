@@ -131,13 +131,10 @@ fn test_dest_city() {
     )
 }
 
-// #[test]
-
-
-
-
-
-
-
-
-
+#[test]
+fn text_max_product_difference() {
+    assert_eq!(
+        crate::leetcode::max_difference::max_product_difference(vec![5, 6, 2, 7, 4]),
+        34
+    )
+}
