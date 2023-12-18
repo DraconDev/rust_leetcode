@@ -18,6 +18,7 @@ pub mod food_ratings;
 pub mod is_happy;
 pub mod largest_good_integer;
 pub mod largest_odd_number;
+pub mod linked_list;
 pub mod max_product;
 pub mod number_of_matches;
 pub mod ones_minus_zeros;
