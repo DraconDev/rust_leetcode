@@ -147,3 +147,16 @@ fn test_is_balanced() {
         true
     )
 }
+
+// test image_smoother
+#[test]
+fn test_image_smoother() {
+    assert_eq!(
+        crate::leetcode::image_smoother::image_smoother(vec![
+            vec![1, 1, 1],
+            vec![1, 0, 1],
+            vec![1, 1, 1]
+        ]),
+        vec![vec![0, 0, 0], vec![0, 0, 0], vec![0, 0, 0]]
+    )
+}
