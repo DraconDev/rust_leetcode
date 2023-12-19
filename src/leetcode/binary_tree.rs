@@ -56,18 +56,18 @@ pub fn build_tree() -> Option<Rc<RefCell<TreeNode>>> {
     build_tree_helper(1, left_values, right_values)
 }
 
-pub fn longest_zig_zag(root: Option<Rc<RefCell<TreeNode>>>) -> i32 {
-    fn dfs(n: &Option<Rc<RefCell<TreeNode>>>, l: i32, r: i32) -> i32 {
-        match n {
-            None => l.max(r),
-            Some(n) => {
-                let v = n.borrow();
-                dfs(&v.left, 0, l + 1).max(dfs(&v.right, r + 1, 0))
-            }
-        }
-    }
-    dfs(&root, 0, 0) - 1
-}
+// pub fn longest_zig_zag(root: Option<Rc<RefCell<TreeNode>>>) -> i32 {
+//     fn dfs(n: &Option<Rc<RefCell<TreeNode>>>, l: i32, r: i32) -> i32 {
+//         match n {
+//             None => l.max(r),
+//             Some(n) => {
+//                 let v = n.borrow();
+//                 dfs(&v.left, 0, l + 1).max(dfs(&v.right, r + 1, 0))
+//             }
+//         }
+//     }
+//     dfs(&root, 0, 0) - 1
+// }
 
 // pub fn lowest_common_ancestor(
 //     root: Option<Rc<RefCell<TreeNode>>>,
@@ -138,77 +138,77 @@ pub fn longest_zig_zag(root: Option<Rc<RefCell<TreeNode>>>) -> i32 {
 //     None
 // }
 
-pub fn max_level_sum(root: Option<Rc<RefCell<TreeNode>>>) -> i32 {
-    let mut queue = VecDeque::<Option<(Rc<RefCell<TreeNode>>, i32)>>::new();
+// pub fn max_level_sum(root: Option<Rc<RefCell<TreeNode>>>) -> i32 {
+//     let mut queue = VecDeque::<Option<(Rc<RefCell<TreeNode>>, i32)>>::new();
 
-    let mut sums = HashMap::new();
+//     let mut sums = HashMap::new();
 
-    queue.push_back(root.map(|r| (Rc::clone(&r), 1)));
+//     queue.push_back(root.map(|r| (Rc::clone(&r), 1)));
 
-    fn bfs(
-        queue: &mut VecDeque<Option<(Rc<RefCell<TreeNode>>, i32)>>,
-        sums: &mut HashMap<i32, i32>,
-    ) {
-        while let Some(Some((n, l))) = queue.pop_front() {
-            let v = n.borrow();
+//     fn bfs(
+//         queue: &mut VecDeque<Option<(Rc<RefCell<TreeNode>>, i32)>>,
+//         sums: &mut HashMap<i32, i32>,
+//     ) {
+//         while let Some(Some((n, l))) = queue.pop_front() {
+//             let v = n.borrow();
 
-            sums.entry(l).and_modify(|e| *e += v.val).or_insert(v.val);
+//             sums.entry(l).and_modify(|e| *e += v.val).or_insert(v.val);
 
-            if let Some(left) = v.left.clone() {
-                queue.push_back(Some((left, l + 1)));
-            }
+//             if let Some(left) = v.left.clone() {
+//                 queue.push_back(Some((left, l + 1)));
+//             }
 
-            if let Some(right) = v.right.clone() {
-                queue.push_back(Some((right, l + 1)));
-            }
-        }
-    }
+//             if let Some(right) = v.right.clone() {
+//                 queue.push_back(Some((right, l + 1)));
+//             }
+//         }
+//     }
 
-    bfs(&mut queue, &mut sums);
+//     bfs(&mut queue, &mut sums);
 
-    let max_sum = sums.values().max().unwrap_or(&0).clone();
-    max_sum
-}
+//     let max_sum = sums.values().max().unwrap_or(&0).clone();
+//     max_sum
+// }
 
-pub fn search_bst(root: Option<Rc<RefCell<TreeNode>>>, val: i32) -> Option<Rc<RefCell<TreeNode>>> {
-    fn dfs(root: &Option<Rc<RefCell<TreeNode>>>, val: i32) -> Option<Rc<RefCell<TreeNode>>> {
-        match root {
-            None => None,
-            Some(n) => {
-                let v = n.borrow();
-                if v.val == val {
-                    Some(Rc::clone(n))
-                } else if v.val > val {
-                    dfs(&v.left, val)
-                } else {
-                    dfs(&v.right, val)
-                }
-            }
-        }
-    }
-    dfs(&root, val)
-}
+// pub fn search_bst(root: Option<Rc<RefCell<TreeNode>>>, val: i32) -> Option<Rc<RefCell<TreeNode>>> {
+//     fn dfs(root: &Option<Rc<RefCell<TreeNode>>>, val: i32) -> Option<Rc<RefCell<TreeNode>>> {
+//         match root {
+//             None => None,
+//             Some(n) => {
+//                 let v = n.borrow();
+//                 if v.val == val {
+//                     Some(Rc::clone(n))
+//                 } else if v.val > val {
+//                     dfs(&v.left, val)
+//                 } else {
+//                     dfs(&v.right, val)
+//                 }
+//             }
+//         }
+//     }
+//     dfs(&root, val)
+// }
 
-pub fn is_balanced(root: Option<Rc<RefCell<TreeNode>>>) -> bool {
-    fn dfs(root: &Option<Rc<RefCell<TreeNode>>>) -> (bool, i32) {
-        match root {
-            None => (true, 0), // An empty tree is balanced with a height of 0.
-            Some(n) => {
-                let v = n.borrow();
-                let (left_balanced, left_height) = dfs(&v.left);
-                let (right_balanced, right_height) = dfs(&v.right);
+// pub fn is_balanced(root: Option<Rc<RefCell<TreeNode>>>) -> bool {
+//     fn dfs(root: &Option<Rc<RefCell<TreeNode>>>) -> (bool, i32) {
+//         match root {
+//             None => (true, 0), // An empty tree is balanced with a height of 0.
+//             Some(n) => {
+//                 let v = n.borrow();
+//                 let (left_balanced, left_height) = dfs(&v.left);
+//                 let (right_balanced, right_height) = dfs(&v.right);
 
-                let balanced =
-                    left_balanced && right_balanced && (left_height - right_height).abs() <= 1;
-                let height = 1 + std::cmp::max(left_height, right_height);
+//                 let balanced =
+//                     left_balanced && right_balanced && (left_height - right_height).abs() <= 1;
+//                 let height = 1 + std::cmp::max(left_height, right_height);
 
-                (balanced, height)
-            }
-        }
-    }
+//                 (balanced, height)
+//             }
+//         }
+//     }
 
-    dfs(&root).0 // We are only interested in the boolean indicating if the tree is balanced.
-}
+//     dfs(&root).0
+// }
 
 // type Node = Option<Rc<RefCell<TreeNode>>>;
 

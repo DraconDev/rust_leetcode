@@ -83,13 +83,13 @@ fn test_special_position() {
 }
 
 // test for longest zig zag
-#[test]
-fn test_longest_zig_zag() {
-    assert_eq!(
-        crate::leetcode::binary_tree::longest_zig_zag(build_tree()),
-        3
-    )
-}
+// #[test]
+// fn test_longest_zig_zag() {
+//     assert_eq!(
+//         crate::leetcode::binary_tree::longest_zig_zag(build_tree()),
+//         3
+//     )
+// }
 
 // test for ones minus zeros
 //  [[0,1,1],[1,0,1],[0,0,1]]
@@ -140,13 +140,13 @@ fn text_max_product_difference() {
 }
 
 // test is balanced
-#[test]
-fn test_is_balanced() {
-    assert_eq!(
-        crate::leetcode::binary_tree::is_balanced(build_tree()),
-        true
-    )
-}
+// #[test]
+// fn test_is_balanced() {
+//     assert_eq!(
+//         crate::leetcode::binary_tree::is_balanced(build_tree()),
+//         true
+//     )
+// }
 
 // test image_smoother
 #[test]
