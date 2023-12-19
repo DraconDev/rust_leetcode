@@ -1,3 +1,4 @@
+use std::borrow::{Borrow, BorrowMut};
 use std::cell::RefCell;
 use std::collections::{HashMap, VecDeque};
 use std::rc::Rc;
@@ -207,4 +208,45 @@ pub fn is_balanced(root: Option<Rc<RefCell<TreeNode>>>) -> bool {
     }
 
     dfs(&root).0 // We are only interested in the boolean indicating if the tree is balanced.
+}
+
+pub fn delete_node(mut root: Node, key: i32) -> Node {
+    fn rec(node1: Node, node2: Node, key: i32, fnd: bool) -> Node {
+        match (node1, node2) {
+            (None, None) => None,
+            (None, Some(nd)) | (Some(nd), None) => {
+                if fnd {
+                    Some(nd)
+                } else {
+                    let v = nd.borrow().val;
+                    if v == key {
+                        return rec(
+                            nd.borrow().left.clone(),
+                            nd.borrow().right.clone(),
+                            key,
+                            true,
+                        );
+                    }
+                    {
+                        let mut nd = nd.borrow_mut();
+                        if v < key {
+                            nd.right = rec(None, nd.right.clone(), key, false);
+                        }
+                        if v > key {
+                            nd.left = rec(None, nd.left.clone(), key, false);
+                        }
+                    }
+                    Some(nd)
+                }
+            }
+            (ndl, Some(ndr)) => {
+                {
+                    let mut ndr = ndr.borrow_mut();
+                    ndr.left = rec(ndl, ndr.left.clone(), key, fnd);
+                }
+                Some(ndr)
+            }
+        }
+    }
+    rec(None, root, key, false)
 }

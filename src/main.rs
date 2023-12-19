@@ -19,6 +19,11 @@ fn main() {
 
     // let test = reverse_linked_list(list);
 
+
+    let a = 1;
+
+    let b = Some(a);
+
     let test = largest_odd_number("4206".to_string());
 
     println!("{:?}", test);
