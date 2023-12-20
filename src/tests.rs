@@ -160,3 +160,12 @@ fn test_image_smoother() {
         vec![vec![0, 0, 0], vec![0, 0, 0], vec![0, 0, 0]]
     )
 }
+// test buy_choco
+
+#[test]
+fn test_buy_choco() {
+    assert_eq!(
+        crate::leetcode::buy_choc::buy_choco(vec![1, 1, 2, 3], 1),
+        2
+    )
+}

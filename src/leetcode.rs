@@ -12,6 +12,7 @@ pub mod remove_element;
 pub mod binary_tree;
 pub mod delete_middle;
 
+pub mod buy_choc;
 pub mod destination_city;
 pub mod find_special_integer;
 pub mod food_ratings;

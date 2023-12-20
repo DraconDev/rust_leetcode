@@ -9,17 +9,6 @@ use crate::leetcode::{
 };
 
 fn main() {
-    // let list = Some(Box::new(ListNode {
-    //     val: 1,
-    //     next: Some(Box::new(ListNode {
-    //         val: 2,
-    //         next: Some(Box::new(ListNode { val: 3, next: None })),
-    //     })),
-    // }));
-
-    // let test = reverse_linked_list(list);
-
-
     let a = 1;
 
     let b = Some(a);
