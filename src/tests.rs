@@ -164,8 +164,36 @@ fn test_image_smoother() {
 
 #[test]
 fn test_buy_choco() {
+    assert_eq!(crate::leetcode::buy_choc::buy_choco(vec![1, 1, 2, 3], 1), 2)
+}
+
+// test can_visit_all_rooms
+#[test]
+fn test_can_visit_all_rooms() {
+    // assert_eq!(
+    //     crate::leetcode::can_visit_all_rooms::can_visit_all_rooms(vec![
+    //         vec![1, 3],
+    //         vec![3, 0, 1],
+    //         vec![2],
+    //         vec![0]
+    //     ]),
+    //     false
+    // );
+    
+    // testcase [[4],[3],[],[2,5,7],[1],[],[8,9],[],[],[6]]
     assert_eq!(
-        crate::leetcode::buy_choc::buy_choco(vec![1, 1, 2, 3], 1),
-        2
+        crate::leetcode::can_visit_all_rooms::can_visit_all_rooms(vec![
+            vec![4],
+            vec![3],
+            vec![],
+            vec![2, 5, 7],
+            vec![1],
+            vec![],
+            vec![8, 9],
+            vec![],
+            vec![],
+            vec![6]
+        ]),
+        false
     )
 }
