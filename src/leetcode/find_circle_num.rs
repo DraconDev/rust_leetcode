@@ -1,19 +1,53 @@
-use std::collections::hash_set;
+// use std::collections::HashSet;
 
-pub fn find_circle_num(is_connected: Vec<Vec<i32>>) -> i32 {
-    let mut provinces = hash_set::HashSet::new();
+// pub fn find_circle_num(is_connected: Vec<Vec<i32>>) -> i32 {
+//     let mut visited = HashSet::new();
+//     let mut count = 0;
 
-    for i in 0..is_connected.len() {
-        for j in 0..is_connected[i].len() {
-            if is_connected[i][j] == 1 && i != j {
-                provinces.insert(j);
+//     for i in 0..is_connected.len() {
+//         if !visited.contains(&i) {
+//             dfs(&is_connected, i, &mut visited);
+//             count += 1; // Found a new province.
+//         }
+//     }
+
+//     count
+// }
+
+// pub fn dfs(is_connected: &Vec<Vec<i32>>, i: usize, visited: &mut HashSet<usize>) {
+//     for j in 0..is_connected.len() {
+//         if is_connected[i][j] == 1 && !visited.contains(&j) {
+//             visited.insert(j);
+//             dfs(is_connected, j, visited); // Continue DFS on the next connected city.
+//         }
+//     }
+// }
+
+use std::collections::HashSet;
+
+pub struct Solution;
+
+impl Solution {
+    pub fn find_circle_num(is_connected: Vec<Vec<i32>>) -> i32 {
+        let mut visited = HashSet::new();
+        let mut count = 0;
+
+        for i in 0..is_connected.len() {
+            if !visited.contains(&i) {
+                Solution::dfs(&is_connected, i, &mut visited); // Use Solution::dfs to refer to the associated function
+                count += 1; // Found a new province.
+            }
+        }
+
+        count
+    }
+
+    pub fn dfs(is_connected: &Vec<Vec<i32>>, i: usize, visited: &mut HashSet<usize>) {
+        for j in 0..is_connected.len() {
+            if is_connected[i][j] == 1 && !visited.contains(&j) {
+                visited.insert(j);
+                Solution::dfs(is_connected, j, visited); // Use Solution::dfs for recursive call
             }
         }
     }
-
-    if provinces.is_empty() {
-        return is_connected.len() as i32;
-    }
-
-    (is_connected.len() - provinces.len() + 1) as i32
 }
