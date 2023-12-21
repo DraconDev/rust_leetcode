@@ -15,6 +15,7 @@ pub mod delete_middle;
 pub mod buy_choc;
 pub mod can_visit_all_rooms;
 pub mod destination_city;
+pub mod find_circle_num;
 pub mod find_special_integer;
 pub mod food_ratings;
 pub mod image_smoother;

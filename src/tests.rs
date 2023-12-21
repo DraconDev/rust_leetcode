@@ -216,3 +216,17 @@ fn test_max_width_of_vertical_area() {
         3
     )
 }
+
+// test find_circle_num
+
+#[test]
+fn test_find_circle_num() {
+    assert_eq!(
+        crate::leetcode::find_circle_num::find_circle_num(vec![
+            vec![1, 1, 0],
+            vec![1, 1, 0],
+            vec![0, 0, 1]
+        ]),
+        2
+    )
+}
