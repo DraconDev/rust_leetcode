@@ -34,7 +34,7 @@ impl Solution {
 
         for i in 0..is_connected.len() {
             if !visited.contains(&i) {
-                Solution::dfs(&is_connected, i, &mut visited); // Use Solution::dfs to refer to the associated function
+                Self::dfs(&is_connected, i, &mut visited); // Use Solution::dfs to refer to the associated function
                 count += 1; // Found a new province.
             }
         }
@@ -46,7 +46,7 @@ impl Solution {
         for j in 0..is_connected.len() {
             if is_connected[i][j] == 1 && !visited.contains(&j) {
                 visited.insert(j);
-                Solution::dfs(is_connected, j, visited); // Use Solution::dfs for recursive call
+                Self::dfs(is_connected, j, visited); // Use Solution::dfs for recursive call
             }
         }
     }
