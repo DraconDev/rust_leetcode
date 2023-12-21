@@ -179,7 +179,7 @@ fn test_can_visit_all_rooms() {
     //     ]),
     //     false
     // );
-    
+
     // testcase [[4],[3],[],[2,5,7],[1],[],[8,9],[],[],[6]]
     assert_eq!(
         crate::leetcode::can_visit_all_rooms::can_visit_all_rooms(vec![
@@ -195,5 +195,24 @@ fn test_can_visit_all_rooms() {
             vec![6]
         ]),
         false
+    )
+}
+
+// test max_width_of_vertical_area Input: points = [[3,1],[9,0],[1,0],[1,4],[5,3],[8,8]] Output: 3
+
+use crate::max_width_of_vertical_area::max_width_of_vertical_area;
+
+#[test]
+fn test_max_width_of_vertical_area() {
+    assert_eq!(
+        max_width_of_vertical_area(vec![
+            vec![3, 1],
+            vec![9, 0],
+            vec![1, 0],
+            vec![1, 4],
+            vec![5, 3],
+            vec![8, 8]
+        ]),
+        3
     )
 }

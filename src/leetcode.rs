@@ -24,6 +24,7 @@ pub mod largest_odd_number;
 pub mod linked_list;
 pub mod max_difference;
 pub mod max_product;
+pub mod max_width_of_vertical_area;
 pub mod number_of_matches;
 pub mod ones_minus_zeros;
 pub mod predict_party_victory;
