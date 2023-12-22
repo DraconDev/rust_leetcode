@@ -8,6 +8,8 @@ use crate::leetcode::{
     solution::total_money_count,
 };
 
+pub struct Solution;
+
 fn main() {
     let a = 1;
 
