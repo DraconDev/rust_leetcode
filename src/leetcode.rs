@@ -37,3 +37,27 @@ pub mod transpose_matrix;
 pub mod valid_anagram;
 
 pub use crate::*;
+
+impl Solution {
+    pub fn max_score(s: String) -> i32 {
+        let mut score = 0;
+        for c in s.chars() {
+            if c == '1' {
+                score += 1;
+            }
+        }
+
+        let mut max = 0;
+        for c in s.chars().take(s.len() - 1) {
+            if c == '0' {
+                score += 1;
+            } else {
+                score -= 1;
+            }
+            if score > max {
+                max = score
+            }
+        }
+        max
+    }
+}
