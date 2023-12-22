@@ -1,9 +1,10 @@
 use std::borrow::{Borrow, BorrowMut};
-use std::cell::RefCell;
-use std::collections::{HashMap, VecDeque};
-use std::rc::Rc;
 
-#[derive(Debug, PartialEq, Eq)]
+use std::collections::{HashMap, VecDeque};
+
+use crate::Solution;
+
+#[derive(Debug, PartialEq, Eq, Clone)]
 pub struct TreeNode {
     pub val: i32,
     pub left: Option<Rc<RefCell<TreeNode>>>,
@@ -251,4 +252,25 @@ pub fn build_tree() -> Option<Rc<RefCell<TreeNode>>> {
 //         }
 //     }
 //     rec(None, root, key, false)
+// }
+use std::cell::RefCell;
+
+use std::rc::Rc;
+
+// impl Solution {
+//     pub fn min_depth(root: Option<Rc<RefCell<TreeNode>>>) -> i32 {
+//         match root {
+//             Some(node) => {
+//                 let left = Self::min_depth.as_ref().borrow().left.clone());
+//                 let right = Self::min_depth.as_ref().borrow().right.clone());
+
+//                 if left == 0 || right == 0 {
+//                     return left.max(right) + 1
+//                 }
+
+//                 left.min(right) + 1
+//             },
+//             None => 0,
+//         }
+//     }
 // }

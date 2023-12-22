@@ -226,3 +226,13 @@ fn test_find_circle_num() {
         2
     )
 }
+
+// test min_depth
+
+// #[test]
+// fn test_min_depth() {
+//     // make example tree
+//     let tree: Option<std::rc::Rc<std::cell::RefCell<binary_tree::TreeNode>>> =
+//         crate::leetcode::binary_tree::build_tree();
+//     assert_eq!(Solution::min_depth(tree), 2)
+// }
