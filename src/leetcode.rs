@@ -61,3 +61,32 @@ impl Solution {
         max
     }
 }
+
+impl Solution {
+    pub fn is_path_crossing(path: String) -> bool {
+        let mut visit = std::collections::HashSet::new();
+        let mut current = (0, 0);
+        for c in path.chars() {
+            visit.insert(current);
+            match c {
+                'N' => {
+                    current.1 += 1;
+                }
+                'S' => {
+                    current.1 -= 1;
+                }
+                'E' => {
+                    current.0 += 1;
+                }
+                'W' => {
+                    current.0 -= 1;
+                }
+                _ => {}
+            }
+            if visit.contains(&current) {
+                return true;
+            }
+        }
+        false
+    }
+}

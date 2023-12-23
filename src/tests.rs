@@ -236,3 +236,10 @@ fn test_find_circle_num() {
 //         crate::leetcode::binary_tree::build_tree();
 //     assert_eq!(Solution::min_depth(tree), 2)
 // }
+
+// test is_path_crossing
+
+#[test]
+fn test_is_path_crossing() {
+    assert_eq!(Solution::is_path_crossing(String::from("NESWW")), true)
+}
