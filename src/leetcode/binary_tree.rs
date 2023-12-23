@@ -274,3 +274,28 @@ use std::rc::Rc;
 //         }
 //     }
 // }
+
+impl Solution {
+    pub fn has_path_sum(root: Option<Rc<RefCell<TreeNode>>>, target_sum: i32) -> bool {
+        fn dfs(
+            root: &Option<Rc<RefCell<TreeNode>>>,
+            mut current_sum: i32,
+            target_sum: i32,
+        ) -> bool {
+            match root {
+                None => false,
+                Some(n) => {
+                    let v = n.as_ref().borrow();
+                    current_sum += v.val;
+                    if v.left.is_none() && v.right.is_none() {
+                        if current_sum == target_sum {
+                            return true;
+                        }
+                    }
+                    dfs(&v.left, current_sum, target_sum) || dfs(&v.right, current_sum, target_sum)
+                }
+            }
+        }
+        dfs(&root, 0, target_sum)
+    }
+}

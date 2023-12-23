@@ -243,3 +243,10 @@ fn test_find_circle_num() {
 fn test_is_path_crossing() {
     assert_eq!(Solution::is_path_crossing(String::from("NESWW")), true)
 }
+
+//  test has_path_sum
+
+#[test]
+fn test_has_path_sum() {
+    assert_eq!(Solution::has_path_sum(build_tree(), 5), true)
+}
