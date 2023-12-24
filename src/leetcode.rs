@@ -152,3 +152,17 @@ impl Solution {
         }
     }
 }
+
+impl Solution {
+    pub fn majority_element(nums: Vec<i32>) -> i32 {
+        let mut elements = std::collections::HashMap::new();
+        for e in &nums {
+            let count = elements.entry(e).or_insert(0);
+            *count += 1;
+            if *count > nums.len() / 2 {
+                return *e;
+            }
+        }
+        0
+    }
+}
