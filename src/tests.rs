@@ -250,3 +250,10 @@ fn test_is_path_crossing() {
 fn test_has_path_sum() {
     assert_eq!(Solution::has_path_sum(build_tree(), 5), true)
 }
+
+// test get_row
+
+#[test]
+fn test_get_row() {
+    assert_eq!(Solution::get_row(3), vec![1, 3, 3, 1])
+}

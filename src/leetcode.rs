@@ -90,3 +90,39 @@ impl Solution {
         false
     }
 }
+
+// impl Solution {
+//     pub fn get_row(row_index: i32) -> Vec<i32> {
+//         let mut row = vec![1];
+//         for i in 0..row_index {
+//             let mut temp: Vec<i32> = Vec::new();
+//             for j in 0..row.len() + 1 {
+//                 temp.push(row.get(j - 1).unwrap_or(&0) + row.get(j).unwrap_or(&0));
+//             }
+//             row = temp;
+//         }
+//         row
+//     }
+// }
+
+impl Solution {
+    pub fn get_row(row_index: i32) -> Vec<i32> {
+        // 1 0 0 0
+        // 1 1 0 0
+        // 1 2 1 0
+        // 1 3 3 1
+        // f(x, y) = f(x - 1, y - 1) + f(x, y - 1)
+
+        let row_index = row_index as usize;
+        let mut arr = vec![0; row_index + 1];
+        arr[0] = 1;
+
+        for i in 1..arr.len() {
+            for j in (1..=i).rev() {
+                arr[j] = arr[j] + arr[j - 1]
+            }
+        }
+
+        arr
+    }
+}
