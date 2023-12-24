@@ -267,3 +267,10 @@ fn test_preorder_traversal() {
         vec![3, 9, 20, 15, 7]
     )
 }
+
+// test majority_element
+
+#[test]
+fn test_majority_element() {
+    assert_eq!(Solution::majority_element(vec![3, 2, 3]), 3)
+}
