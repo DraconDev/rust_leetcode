@@ -257,3 +257,13 @@ fn test_has_path_sum() {
 fn test_get_row() {
     assert_eq!(Solution::get_row(3), vec![1, 3, 3, 1])
 }
+
+// test preorder_traversal
+
+#[test]
+fn test_preorder_traversal() {
+    assert_eq!(
+        Solution::preorder_traversal(build_tree()),
+        vec![3, 9, 20, 15, 7]
+    )
+}

@@ -299,3 +299,22 @@ impl Solution {
         dfs(&root, 0, target_sum)
     }
 }
+
+impl Solution {
+    pub fn preorder_traversal(root: Option<Rc<RefCell<TreeNode>>>) -> Vec<i32> {
+        let mut result = vec![];
+        fn dfs(root: &Option<Rc<RefCell<TreeNode>>>, result: &mut Vec<i32>) {
+            match root {
+                None => (),
+                Some(n) => {
+                    let v = n.as_ref().borrow();
+                    result.push(v.val);
+                    dfs(&v.left, result);
+                    dfs(&v.right, result);
+                }
+            }
+        }
+        dfs(&root, &mut result);
+        result
+    }
+}
