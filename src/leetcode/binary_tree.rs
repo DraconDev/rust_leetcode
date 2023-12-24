@@ -318,3 +318,23 @@ impl Solution {
         result
     }
 }
+
+impl Solution {
+    pub fn postorder_traversal(root: Option<Rc<RefCell<TreeNode>>>) -> Vec<i32> {
+        let mut result = vec![];
+        fn dfs(root: &Option<Rc<RefCell<TreeNode>>>, result: &mut Vec<i32>) {
+            match root {
+                None => (),
+                Some(n) => {
+                    let v = n.as_ref().borrow();
+
+                    dfs(&v.left, result);
+                    dfs(&v.right, result);
+                    result.push(v.val);
+                }
+            }
+        }
+        dfs(&root, &mut result);
+        result
+    }
+}
