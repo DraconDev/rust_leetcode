@@ -175,7 +175,6 @@ impl Solution {
             match c {
                 '0' => {
                     if i > 0 && (chars[i - 1] == '1' || chars[i - 1] == '2') {
-                        count += 1
                     } else {
                         return 0;
                     }
