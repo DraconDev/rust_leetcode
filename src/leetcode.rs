@@ -167,25 +167,19 @@ impl Solution {
     }
 }
 
+
 impl Solution {
     pub fn num_decodings(s: String) -> i32 {
-        let n = s.len();
-        // dp[i] := the number of ways to decode s[i..n)
-        let mut dp = vec![0; n + 1];
-        dp[n] = 1; // ""
-        let s = s.as_bytes();
-        if s[n - 1] != b'0' {
-            dp[n - 1] = 1;
-        }
-
-        for i in (0..n - 1).rev() {
-            if s[i] != b'0' {
-                dp[i] += dp[i + 1];
-            }
-            if s[i] == b'1' || s[i] == b'2' && s[i + 1] < b'7' {
-                dp[i] += dp[i + 2];
-            }
-        }
-        dp[0]
+        s.chars()
+            .enumerate()
+            .fold([1, 0],
+                |a, (i, c)|
+                [ if c != '0' {a[0] + a[1]} else {0},
+                  if i>0 && (s.chars().nth(i-1) == Some('1') ||
+                    (s.chars().nth(i-1) == Some('2') && c < '7')) {a[0]} else {0}
+                ]
+            )
+            .iter()
+            .sum()
     }
 }
