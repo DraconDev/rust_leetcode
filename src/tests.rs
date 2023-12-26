@@ -274,3 +274,13 @@ fn test_preorder_traversal() {
 fn test_majority_element() {
     assert_eq!(Solution::majority_element(vec![3, 2, 3]), 3)
 }
+
+// test num_decodings
+
+#[test]
+fn test_num_decodings() {
+    // assert_eq!(Solution::num_decodings(String::from("12")), 2);
+    // assert_eq!(Solution::num_decodings(String::from("226")), 3);
+    // * 06
+    assert_eq!(Solution::num_decodings(String::from("06")), 0)
+}

@@ -166,3 +166,24 @@ impl Solution {
         0
     }
 }
+
+impl Solution {
+    pub fn num_decodings(s: String) -> i32 {
+        let mut count = 0;
+        let chars: Vec<char> = s.chars().collect();
+        for (i, c) in s.chars().enumerate() {
+            match c {
+                '0' => {
+                    if i > 0 && (chars[i - 1] == '1' || chars[i - 1] == '2') {
+                        count += 1
+                    } else {
+                        return 0;
+                    }
+                }
+                _ => count += 1,
+            }
+        }
+
+        count
+    }
+}
