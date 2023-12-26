@@ -279,8 +279,8 @@ fn test_majority_element() {
 
 #[test]
 fn test_num_decodings() {
-    // assert_eq!(Solution::num_decodings(String::from("12")), 2);
+    assert_eq!(Solution::num_decodings(String::from("10")), 2);
     // assert_eq!(Solution::num_decodings(String::from("226")), 3);
     // * 06
-    assert_eq!(Solution::num_decodings(String::from("06")), 0)
+    // assert_eq!(Solution::num_decodings(String::from("06")), 0)
 }
