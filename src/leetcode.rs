@@ -254,3 +254,24 @@ impl Solution {
         dfs(0, &graph, &mut visited)
     }
 }
+
+impl Solution {
+    pub fn min_cost(colors: String, needed_time: Vec<i32>) -> i32 {
+        let mut total_time = 0;
+        let mut max_time = 0; // This will store the maximum time of the same color balloons
+        let colors: Vec<char> = colors.chars().collect();
+
+        for i in 0..colors.len() {
+            // If this is the first balloon or the color has changed, update max_time
+            if i == 0 || colors[i] != colors[i - 1] {
+                max_time = needed_time[i];
+            } else {
+                // If the current balloon has the same color as the previous one
+                // Add the lesser time to total_time and update max_time if necessary
+                total_time += needed_time[i].min(max_time);
+                max_time = needed_time[i].max(max_time);
+            }
+        }
+        total_time
+    }
+}

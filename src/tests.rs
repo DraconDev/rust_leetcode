@@ -297,3 +297,21 @@ fn test_min_reorder() {
         3
     );
 }
+
+// test min cost
+
+#[test]
+fn test_min_cost() {
+    // assert_eq!(
+    //     Solution::min_cost(String::from("abaac"), vec![31, 12, 3, 4, 5]),
+    //     3
+    // );
+    // aaabbbabbbb
+    assert_eq!(
+        Solution::min_cost(
+            String::from("aaabbbabbbb"),
+            vec![3, 5, 10, 7, 5, 3, 5, 5, 4, 8, 1]
+        ),
+        26
+    )
+}
