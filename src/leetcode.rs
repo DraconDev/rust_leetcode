@@ -36,6 +36,8 @@ pub mod special_position;
 pub mod transpose_matrix;
 pub mod valid_anagram;
 
+use std::collections::{hash_map, HashMap};
+
 pub use crate::*;
 
 impl Solution {
@@ -167,19 +169,88 @@ impl Solution {
     }
 }
 
-
 impl Solution {
     pub fn num_decodings(s: String) -> i32 {
         s.chars()
             .enumerate()
-            .fold([1, 0],
-                |a, (i, c)|
-                [ if c != '0' {a[0] + a[1]} else {0},
-                  if i>0 && (s.chars().nth(i-1) == Some('1') ||
-                    (s.chars().nth(i-1) == Some('2') && c < '7')) {a[0]} else {0}
+            .fold([1, 0], |a, (i, c)| {
+                [
+                    if c != '0' { a[0] + a[1] } else { 0 },
+                    if i > 0
+                        && (s.chars().nth(i - 1) == Some('1')
+                            || (s.chars().nth(i - 1) == Some('2') && c < '7'))
+                    {
+                        a[0]
+                    } else {
+                        0
+                    },
                 ]
-            )
+            })
             .iter()
             .sum()
+    }
+}
+
+// impl Solution {
+//     pub fn min_reorder(n: i32, connections: Vec<Vec<i32>>) -> i32 {
+//         let mut changed = 0;
+//         let mut visited = std::collections::HashSet::new();
+//         visited.insert(&0);
+
+//         for e in connections.iter() {
+//             if visited.contains(&e[1]) {
+//                 visited.insert(&e[0]);
+//             } else {
+//                 visited.insert(&e[1]);
+//                 changed += 1
+//             }
+//         }
+//         changed
+//     }
+// }
+
+use std::collections::HashSet;
+
+impl Solution {
+    pub fn min_reorder(n: i32, connections: Vec<Vec<i32>>) -> i32 {
+        let mut graph = HashMap::new();
+        // Construct the graph
+        for connection in &connections {
+            graph
+                .entry(connection[0])
+                .or_insert(vec![])
+                .push((connection[1], true)); // true indicates the edge is from connection[0] to connection[1]
+            graph
+                .entry(connection[1])
+                .or_insert(vec![])
+                .push((connection[0], false)); // false indicates the edge is from connection[1] to connection[0]
+        }
+
+        // DFS function to count the number of edges to be reversed
+        fn dfs(
+            city: i32,
+            graph: &HashMap<i32, Vec<(i32, bool)>>,
+            visited: &mut HashSet<i32>,
+        ) -> i32 {
+            visited.insert(city);
+            let mut count = 0;
+
+            if let Some(neighbors) = graph.get(&city) {
+                for &(next_city, edge_reversed) in neighbors {
+                    if !visited.contains(&next_city) {
+                        // If the edge is reversed, it needs to be counted
+                        count += if edge_reversed { 1 } else { 0 };
+                        // Continue DFS traversal
+                        count += dfs(next_city, graph, visited);
+                    }
+                }
+            }
+
+            count
+        }
+
+        let mut visited = HashSet::new();
+        // Start DFS from the capital city (city 0)
+        dfs(0, &graph, &mut visited)
     }
 }

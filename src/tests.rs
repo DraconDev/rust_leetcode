@@ -284,3 +284,16 @@ fn test_num_decodings() {
     // * 06
     // assert_eq!(Solution::num_decodings(String::from("06")), 0)
 }
+
+// test min_reorder
+
+#[test]
+fn test_min_reorder() {
+    assert_eq!(
+        Solution::min_reorder(
+            6,
+            vec![vec![0, 1], vec![1, 3], vec![2, 3], vec![4, 0], vec![4, 5]]
+        ),
+        3
+    );
+}
