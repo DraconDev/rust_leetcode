@@ -354,3 +354,13 @@ fn test_remove_elements() {
         }))
     )
 }
+
+// test is_isomorphic
+
+#[test]
+fn test_is_isomorphic() {
+    assert_eq!(
+        Solution::is_isomorphic(String::from("egg"), String::from("add")),
+        true
+    )
+}

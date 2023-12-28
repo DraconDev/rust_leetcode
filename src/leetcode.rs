@@ -390,3 +390,25 @@ impl Solution {
         list
     }
 }
+
+impl Solution {
+    pub fn is_isomorphic(s: String, t: String) -> bool {
+        if s.len() != t.len() {
+            return false;
+        }
+
+        let mut s_to_t_mapping = HashMap::new();
+        let mut t_to_s_mapping = HashMap::new();
+
+        for (s_char, t_char) in s.chars().zip(t.chars()) {
+            let s_mapped = s_to_t_mapping.entry(s_char).or_insert(t_char);
+            let t_mapped = t_to_s_mapping.entry(t_char).or_insert(s_char);
+
+            if *s_mapped != t_char || *t_mapped != s_char {
+                return false;
+            }
+        }
+
+        true
+    }
+}
