@@ -327,33 +327,49 @@ impl Solution {
     }
 }
 
-impl Solution {
-    pub fn remove_elements(head: Option<Box<ListNode>>, val: i32) -> Option<Box<ListNode>> {
-        let mut dummy_head = Some(Box::new(ListNode { val: 0, next: head }));
-        let mut current = dummy_head.as_mut();
+// impl Solution {
+//     pub fn remove_elements(head: Option<Box<ListNode>>, val: i32) -> Option<Box<ListNode>> {
+//         let mut dummy_head = Some(Box::new(ListNode { val: 0, next: head }));
+//         let mut current = dummy_head.as_mut();
 
-        while current.is_some() {
-            while current.as_ref().unwrap().next.is_some()
-                && current.as_ref().unwrap().next.as_ref().unwrap().val == val
-            {
-                if current
-                    .as_ref()
-                    .unwrap()
-                    .next
-                    .as_ref()
-                    .unwrap()
-                    .next
-                    .is_none()
-                {
-                    current.as_mut().unwrap().next = None;
-                } else {
-                    current.as_mut().unwrap().next =
-                        current.as_mut().unwrap().next.as_mut().unwrap().next.take();
-                }
-            }
-            current = current.unwrap().next.as_mut();
+//         while current.is_some() {
+//             while current.as_ref().unwrap().next.is_some()
+//                 && current.as_ref().unwrap().next.as_ref().unwrap().val == val
+//             {
+//                 if current
+//                     .as_ref()
+//                     .unwrap()
+//                     .next
+//                     .as_ref()
+//                     .unwrap()
+//                     .next
+//                     .is_none()
+//                 {
+//                     current.as_mut().unwrap().next = None;
+//                 } else {
+//                     current.as_mut().unwrap().next =
+//                         current.as_mut().unwrap().next.as_mut().unwrap().next.take();
+//                 }
+//             }
+//             current = current.unwrap().next.as_mut();
+//         }
+
+//         dummy_head.unwrap().next
+//     }
+// }
+
+pub fn remove_elements(mut head: Option<Box<ListNode>>, val: i32) -> Option<Box<ListNode>> {
+    let mut dummy = None;
+    let mut tail = &mut dummy;
+
+    while let Some(mut node) = head.take() {
+        head = node.next.take();
+
+        if node.val != val {
+            *tail = Some(node);
+            tail = &mut tail.as_mut().unwrap().next;
         }
-
-        dummy_head.unwrap().next
     }
+
+    dummy
 }
