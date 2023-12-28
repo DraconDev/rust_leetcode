@@ -374,17 +374,19 @@ impl Solution {
 //     dummy
 // }
 
-pub fn remove_elements(mut head: Option<Box<ListNode>>, val: i32) -> Option<Box<ListNode>> {
-    let mut list = None;
-    let mut tail = &mut list;
+impl Solution {
+    pub fn remove_elements(mut head: Option<Box<ListNode>>, val: i32) -> Option<Box<ListNode>> {
+        let mut list = None;
+        let mut tail = &mut list;
 
-    while let Some(mut node) = head.take() {
-        head = node.next.take();
+        while let Some(mut node) = head.take() {
+            head = node.next.take();
 
-        if node.val != val {
-            tail = &mut tail.insert(node).next;
+            if node.val != val {
+                tail = &mut tail.insert(node).next;
+            }
         }
-    }
 
-    list
+        list
+    }
 }
