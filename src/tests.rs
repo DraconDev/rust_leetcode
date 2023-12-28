@@ -332,3 +332,25 @@ fn test_get_length_of_optimal_compression() {
 fn test_title_to_number() {
     assert_eq!(Solution::title_to_number(String::from("ZY")), 701)
 }
+
+// test remove_elements
+
+#[test]
+fn test_remove_elements() {
+    assert_eq!(
+        Solution::remove_elements(
+            Some(Box::new(ListNode {
+                val: 1,
+                next: Some(Box::new(ListNode {
+                    val: 2,
+                    next: Some(Box::new(ListNode { val: 6, next: None })),
+                })),
+            })),
+            6
+        ),
+        Some(Box::new(ListNode {
+            val: 1,
+            next: Some(Box::new(ListNode { val: 2, next: None })),
+        }))
+    )
+}
