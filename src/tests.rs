@@ -315,3 +315,13 @@ fn test_min_cost() {
         26
     )
 }
+
+// test get_length_of_optimal_compression
+
+#[test]
+fn test_get_length_of_optimal_compression() {
+    assert_eq!(
+        Solution::get_length_of_optimal_compression(String::from("aabbaa"), 2),
+        2
+    )
+}
