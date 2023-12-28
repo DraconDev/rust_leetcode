@@ -277,45 +277,52 @@ impl Solution {
 }
 
 impl Solution {
-    pub fn get_length_of_optimal_compression(s: String, k: i32) -> i32 {
-        // Bigger than anything we could get, but small enough so it's possible to add f(count)
-        // later without saturating
-        let mut dp = [[i32::MAX - 101; 101]; 101];
-        dp[0].fill(0);
-
-        // If, using first i (+ 1) characters
-        for (i, c) in s.bytes().enumerate().map(|(i, c)| (i + 1, c)) {
-            // We remove at most n_rem characters
-            for to_rem in 0..=(i).min(k as usize) {
-                // dp[i][n_rem] = the best result possible
-
-                // Remove the current character
-                if to_rem > 0 {
-                    dp[i][to_rem] = dp[i - 1][to_rem - 1];
-                }
-
-                // Keep the current character, and remove previous characters to make a chain with
-                // the current character
-
-                let mut count = 0_i32;
-                let mut removed = 0;
-                for (j, c_) in s.bytes().enumerate().take(i).rev() {
-                    // If we remove from s[j..i] characters which are not s[i] we would have
-                    // count matching characters
-
-                    if c_ == c {
-                        count += 1;
-                    } else {
-                        removed += 1;
-                        if removed > to_rem {
-                            break;
-                        }
-                    }
-                    let f = |c: i32| (c as f32).log10().floor() as i32 + 1 + (c != 1) as i32;
-                    dp[i][to_rem] = dp[i][to_rem].min(dp[j][to_rem - removed] + f(count));
-                }
+    fn dp(
+        s: &[u8],
+        k: usize,
+        i: usize,
+        last: u8,
+        cnt: usize,
+        j: usize,
+        memo: &mut HashMap<(usize, u8, usize, usize), i32>,
+    ) -> i32 {
+        if i == s.len() {
+            0
+        } else if let Some(additional_len) = memo.get(&(i, last, cnt, j)) {
+            *additional_len
+        } else {
+            let b = s[i];
+            let mut rez = 1 + Self::dp(s, k, i + 1, b, 1, j, memo);
+            if last == b {
+                let comp = if cnt != 1 && cnt != 9 && cnt != 99 {
+                    Self::dp(s, k, i + 1, b, cnt + 1, j, memo)
+                } else {
+                    1 + Self::dp(s, k, i + 1, b, cnt + 1, j, memo)
+                };
+                rez = rez.min(comp);
             }
+            if j < k {
+                rez = rez.min(Self::dp(s, k, i + 1, last, cnt, j + 1, memo));
+            }
+            memo.insert((i, last, cnt, j), rez);
+            rez
         }
-        dp[s.len()][k as usize]
+    }
+
+    pub fn get_length_of_optimal_compression(s: String, k: i32) -> i32 {
+        Self::dp(s.as_bytes(), k as usize, 0, b'A', 0, 0, &mut HashMap::new())
+    }
+}
+
+impl Solution {
+    pub fn title_to_number(column_title: String) -> i32 {
+        let mut result: i32 = 0;
+
+        for c in column_title.bytes() {
+            result *= 26;
+            result += (c as i32 - 65) + 1;
+        }
+
+        result
     }
 }

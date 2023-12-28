@@ -325,3 +325,10 @@ fn test_get_length_of_optimal_compression() {
         2
     )
 }
+
+// test title_to_number
+
+#[test]
+fn test_title_to_number() {
+    assert_eq!(Solution::title_to_number(String::from("ZY")), 701)
+}
