@@ -414,17 +414,16 @@ impl Solution {
 }
 
 impl Solution {
-    pub fn contains_nearby_duplicate(nums: Vec<i32>, k: usize) -> bool {
-        let mut map = HashMap::new(); // A map to keep track of the most recent index for each num.
+    pub fn contains_nearby_duplicate(nums: Vec<i32>, k: i32) -> bool {
+        let k = k as usize;
+        let mut map = std::collections::HashMap::with_capacity(nums.len());
+        // Pre-allocate with the number of elements
 
         for (i, &num) in nums.iter().enumerate() {
-            if let Some(&last_index) = map.get(&num) {
-                if i - last_index <= k { // Directly compare usize indices.
-                    return true;
-                }
-            }
-            // Update the map with the most recent index for num.
-            map.insert(num, i);
+            match map.get(&num) {
+                Some(&last_index) if i - last_index <= k => return true,
+                _ => map.insert(num, i), // Only insert if necessary
+            };
         }
 
         false
