@@ -364,3 +364,13 @@ fn test_is_isomorphic() {
         true
     )
 }
+
+// test contains_nearby_duplicate
+
+#[test]
+fn test_contains_nearby_duplicate() {
+    assert_eq!(
+        Solution::contains_nearby_duplicate(vec![1, 2, 3, 1], 3),
+        true
+    )
+}
