@@ -338,3 +338,44 @@ impl Solution {
         result
     }
 }
+
+impl Solution {
+    pub fn count_nodes(root: Option<Rc<RefCell<TreeNode>>>) -> i32 {
+        let mut count = 0;
+        Self::dfs2(&root, &mut count);
+        count
+    }
+
+    fn dfs2(root: &Option<Rc<RefCell<TreeNode>>>, count: &mut i32) {
+        match root {
+            None => (),
+            Some(n) => {
+                let v = n.as_ref().borrow();
+                *count += 1;
+                Self::dfs2(&v.left, count);
+                Self::dfs2(&v.right, count);
+            }
+        }
+    }
+}
+
+// impl Solution {
+//     pub fn count_nodes(root: Option<Rc<RefCell<TreeNode>>>) -> i32 {
+//         if root.is_none() {
+//             return 0;
+//         }
+
+//         fn dfs(root: &Option<Rc<RefCell<TreeNode>>>, count: &mut i32) {
+//             if root.is_some() {
+//                 let v = root.as_ref().unwrap().as_ref().borrow();
+//                 *count += 1;
+//                 dfs(&v.left, count);
+//                 dfs(&v.right, count);
+//             }
+//         }
+
+//         let mut count = 0;
+//         dfs(&root, &mut count);
+//         count
+//     }
+// }
