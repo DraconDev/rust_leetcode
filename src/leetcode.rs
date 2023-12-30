@@ -429,3 +429,23 @@ impl Solution {
         false
     }
 }
+
+impl Solution {
+    pub fn make_equal(words: Vec<String>) -> bool {
+        let mut map = std::collections::HashMap::new();
+
+        for word in &words {
+            for c in word.chars() {
+                *map.entry(c).or_insert(0) += 1;
+            }
+        }
+
+        for letter in map.values() {
+            if *letter % words.len() != 0 {
+                return false;
+            }
+        }
+
+        true
+    }
+}
