@@ -374,3 +374,17 @@ fn test_contains_nearby_duplicate() {
         true
     )
 }
+
+// test max_length_between_equal_characters
+
+#[test]
+fn test_max_length_between_equal_characters() {
+    // assert_eq!(
+    //     Solution::max_length_between_equal_characters(String::from("aa")),
+    //     -1
+    // );
+    assert_eq!(
+        Solution::max_length_between_equal_characters(String::from("abca")),
+        2
+    )
+}

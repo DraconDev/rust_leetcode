@@ -1,6 +1,6 @@
 use std::borrow::{Borrow, BorrowMut};
 
-use std::collections::{HashMap, VecDeque};
+use std::collections::{hash_map, HashMap, VecDeque};
 
 use crate::Solution;
 
@@ -379,3 +379,22 @@ impl Solution {
 //         count
 //     }
 // }
+
+impl Solution {
+    pub fn max_length_between_equal_characters(s: String) -> i32 {
+        let mut max_gap = -1;
+        let mut letter_map: HashMap<char, i32> = HashMap::new();
+        for (i, c) in s.chars().enumerate() {
+            if letter_map.contains_key(&c) {
+                let max = i as i32 - letter_map.get(&c).unwrap() - 1;
+                if max > max_gap {
+                    max_gap = max
+                }
+            } else {
+                letter_map.insert(c, i as i32);
+            }
+        }
+
+        max_gap
+    }
+}
