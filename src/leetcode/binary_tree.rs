@@ -430,15 +430,12 @@ impl Solution {
         g.sort_unstable();
         s.sort_unstable();
 
-        let skip_count = if s.len() > g.len() {
-            s.len() - g.len()
-        } else {
-            0
-        };
-
-        for cookie in s.iter().skip(skip_count) {
-            if g[satisfied] <= *cookie {
+        for cookie in s {
+            if g[satisfied] <= cookie {
                 satisfied += 1;
+            }
+            if satisfied == g.len() {
+                break;
             }
         }
 
