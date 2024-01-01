@@ -426,17 +426,16 @@ impl Solution {
 impl Solution {
     pub fn find_content_children(mut g: Vec<i32>, mut s: Vec<i32>) -> i32 {
         let mut satisfied = 0;
+        let mut cookie_index = 0;
 
         g.sort_unstable();
         s.sort_unstable();
 
-        for cookie in s {
-            if g[satisfied] <= cookie {
+        while satisfied < g.len() && cookie_index < s.len() {
+            if g[satisfied] <= s[cookie_index] {
                 satisfied += 1;
             }
-            if satisfied == g.len() {
-                break;
-            }
+            cookie_index += 1;
         }
 
         satisfied as i32
