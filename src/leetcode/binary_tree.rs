@@ -1,6 +1,6 @@
 use std::borrow::{Borrow, BorrowMut};
 
-use std::collections::{hash_map, HashMap, VecDeque};
+use std::collections::{hash_map, BTreeMap, HashMap, VecDeque};
 
 use crate::Solution;
 
@@ -396,5 +396,29 @@ impl Solution {
         }
 
         max_gap
+    }
+}
+
+impl Solution {
+    pub fn find_content_children(g: Vec<i32>, mut s: Vec<i32>) -> i32 {
+        // Clone `s` and make it mutable
+        let mut satisfied = 0;
+
+        let mut cookies = BTreeMap::new();
+        for cookie in s {
+            *cookies.entry(cookie).or_insert(0) += 1;
+        }
+
+        for child in g {
+            for (cookie, count) in cookies.iter_mut() {
+                if *cookie >= child && *count > 0 {
+                    *count -= 1;
+                    satisfied += 1;
+                    break;
+                }
+            }
+        }
+
+        satisfied
     }
 }

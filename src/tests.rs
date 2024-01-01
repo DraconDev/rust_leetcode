@@ -388,3 +388,13 @@ fn test_max_length_between_equal_characters() {
         2
     )
 }
+
+// test find_content_children
+
+#[test]
+fn test_find_content_children() {
+    assert_eq!(
+        Solution::find_content_children(vec![1, 2, 3], vec![1, 1]),
+        1
+    )
+}
