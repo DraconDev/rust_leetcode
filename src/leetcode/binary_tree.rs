@@ -399,26 +399,49 @@ impl Solution {
     }
 }
 
+// impl Solution {
+//     pub fn find_content_children(g: Vec<i32>, mut s: Vec<i32>) -> i32 {
+//         // Clone `s` and make it mutable
+//         let mut satisfied = 0;
+
+//         let mut cookies = BTreeMap::new();
+//         for cookie in s {
+//             *cookies.entry(cookie).or_insert(0) += 1;
+//         }
+
+//         for child in g {
+//             for (cookie, count) in cookies.iter_mut() {
+//                 if *cookie >= child && *count > 0 {
+//                     *count -= 1;
+//                     satisfied += 1;
+//                     break;
+//                 }
+//             }
+//         }
+
+//         satisfied
+//     }
+// }
+
 impl Solution {
-    pub fn find_content_children(g: Vec<i32>, mut s: Vec<i32>) -> i32 {
-        // Clone `s` and make it mutable
+    pub fn find_content_children(mut g: Vec<i32>, mut s: Vec<i32>) -> i32 {
         let mut satisfied = 0;
 
-        let mut cookies = BTreeMap::new();
-        for cookie in s {
-            *cookies.entry(cookie).or_insert(0) += 1;
-        }
+        g.sort_unstable();
+        s.sort_unstable();
 
-        for child in g {
-            for (cookie, count) in cookies.iter_mut() {
-                if *cookie >= child && *count > 0 {
-                    *count -= 1;
-                    satisfied += 1;
-                    break;
-                }
+        let skip_count = if s.len() > g.len() {
+            s.len() - g.len()
+        } else {
+            0
+        };
+
+        for cookie in s.iter().skip(skip_count) {
+            if g[satisfied] <= *cookie {
+                satisfied += 1;
             }
         }
 
-        satisfied
+        satisfied as i32
     }
 }
