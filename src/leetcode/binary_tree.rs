@@ -441,3 +441,26 @@ impl Solution {
         satisfied as i32
     }
 }
+
+impl Solution {
+    pub fn find_matrix(nums: Vec<i32>) -> Vec<Vec<i32>> {
+        let mut rows = vec![vec![]];
+        let mut row = 0;
+
+        for num in nums {
+            for i in 0..row + 1 {
+                if rows[i].contains(&num) {
+                    if i == rows.len() -1 {
+                        row += 1;
+                        rows.push(vec![num]);
+                    }
+                } else {
+                    rows[i].push(num);
+                    break;
+                }
+            }
+        }
+
+        rows
+    }
+}

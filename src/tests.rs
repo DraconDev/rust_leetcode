@@ -398,3 +398,13 @@ fn test_find_content_children() {
         1
     )
 }
+
+// test find matrix [1,3,4,1,2,3,1]
+
+#[test]
+fn test_find_matrix() {
+    assert_eq!(
+        Solution::find_matrix(vec![1, 3, 4, 1, 2, 3, 1]),
+        vec![vec![1, 3, 4], vec![1, 2, 3], vec![1]]
+    )
+}
