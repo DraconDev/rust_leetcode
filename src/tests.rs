@@ -408,3 +408,19 @@ fn test_find_matrix() {
         vec![vec![1, 3, 4], vec![1, 2, 3], vec![1]]
     )
 }
+
+// test number_of_beams
+
+#[test]
+fn test_number_of_beams() {
+    // ["011001","000000","010100","001000"]
+    assert_eq!(
+        Solution::number_of_beams(vec![
+            String::from("011001"),
+            String::from("000000"),
+            String::from("010100"),
+            String::from("001000")
+        ]),
+        8
+    )
+}
