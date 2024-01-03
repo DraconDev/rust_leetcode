@@ -465,9 +465,37 @@ impl Solution {
     }
 }
 
+// impl Solution {
+//     pub fn number_of_beams(bank: Vec<String>) -> i32 {
+//         let mut lasers_row = Vec::new();
+
+//         for row in bank {
+//             let mut count = 0;
+//             for c in row.chars() {
+//                 if c == '1' {
+//                     count += 1;
+//                 }
+//             }
+//             if count > 0 {
+//                 lasers_row.push(count);
+//             }
+//         }
+//         if lasers_row.len() <= 1 {
+//             return 0;
+//         } else {
+//             let mut result = 0;
+//             for i in 1..lasers_row.len() {
+//                 result += lasers_row[i - 1] * lasers_row[i];
+//             }
+//             result
+//         }
+//     }
+// }
+
 impl Solution {
     pub fn number_of_beams(bank: Vec<String>) -> i32 {
-        let mut lasers_row = Vec::new();
+        let mut result = 0;
+        let mut prev = 0;
 
         for row in bank {
             let mut count = 0;
@@ -477,17 +505,10 @@ impl Solution {
                 }
             }
             if count > 0 {
-                lasers_row.push(count);
+                result += prev * count;
+                prev = count;
             }
         }
-        if lasers_row.len() <= 1 {
-            return 0;
-        } else {
-            let mut result = 0;
-            for i in 1..lasers_row.len() {
-                result += lasers_row[i - 1] * lasers_row[i];
-            }
-            result
-        }
+        result
     }
 }
