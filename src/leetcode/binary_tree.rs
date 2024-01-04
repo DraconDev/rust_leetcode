@@ -2,8 +2,6 @@ use std::borrow::{Borrow, BorrowMut};
 
 use std::collections::{hash_map, BTreeMap, HashMap, VecDeque};
 
-use alloc::collections;
-
 use crate::Solution;
 
 #[derive(Debug, PartialEq, Eq, Clone)]
@@ -512,29 +510,5 @@ impl Solution {
             }
         }
         result
-    }
-}
-
-impl Solution {
-    pub fn min_operations2(nums: Vec<i32>) -> i32 {
-        let mut map = std::collections::HashMap::new();
-        for num in nums {
-            *map.entry(num).or_insert(0) += 1
-        }
-
-        let mut operations = 0;
-        for (k, v) in map {
-            if v <= 1 {
-                return -1;
-            }
-            if v <= 3 {
-                operations += 1
-            } else if v % 3 != 0 {
-                operations += v / 3 + 1
-            } else {
-                operations += v / 3
-            }
-        }
-        operations
     }
 }
