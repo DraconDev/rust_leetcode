@@ -424,3 +424,10 @@ fn test_number_of_beams() {
         8
     )
 }
+
+// test min_operations2
+
+#[test]
+fn test_min_operations2() {
+    assert_eq!(Solution::min_operations2(vec![1, 1, 2, 2, 2, 2]), 3)
+}
