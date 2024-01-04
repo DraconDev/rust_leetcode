@@ -431,3 +431,12 @@ fn test_number_of_beams() {
 fn test_min_operations2() {
     assert_eq!(Solution::min_operations2(vec![1, 1, 2, 2, 2, 2]), 3)
 }
+
+// test binary_search
+
+#[test]
+fn test_binary_search() {
+    assert_eq!(Solution::binary_search(vec![-1, 0, 2, 5, 9, 12], 2), -1);
+
+    // assert_eq!(Solution::binary_search(vec![5], -5), 0)
+}

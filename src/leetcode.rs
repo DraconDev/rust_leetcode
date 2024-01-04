@@ -462,14 +462,34 @@ impl Solution {
             if v <= 1 {
                 return -1;
             }
-            if v <= 3 {
-                operations += 1
-            } else if v % 3 != 0 {
+            if v % 3 != 0 {
                 operations += v / 3 + 1
             } else {
                 operations += v / 3
             }
         }
         operations
+    }
+}
+
+impl Solution {
+    pub fn binary_search(nums: Vec<i32>, target: i32) -> i32 {
+        let mut left = 0;
+        let mut right: i32 = (nums.len() - 1) as i32;
+
+        while left <= right {
+            let mid = (left + right) / 2;
+
+            if nums[mid as usize] == target {
+                return mid;
+            }
+
+            if nums[mid as usize] < target {
+                left = mid + 1;
+            } else {
+                right = mid - 1;
+            }
+        }
+        -1
     }
 }
