@@ -440,3 +440,11 @@ fn test_binary_search() {
 
     // assert_eq!(Solution::binary_search(vec![5], -5), 0)
 }
+
+// test length_of_lis
+
+#[test]
+fn test_length_of_lis() {
+    assert_eq!(Solution::length_of_lis(vec![10, 9, 2, 5, 3, 7, 101, 18]), 4);
+    // assert_eq!(Solution::length_of_lis(vec![0, 1, 0, 3, 2, 3]), 4)
+}
