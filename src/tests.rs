@@ -448,3 +448,16 @@ fn test_length_of_lis() {
     assert_eq!(Solution::length_of_lis(vec![10, 9, 2, 5, 3, 7, 101, 18]), 4);
     // assert_eq!(Solution::length_of_lis(vec![0, 1, 0, 3, 2, 3]), 4)
 }
+
+// test search_matrix
+
+#[test]
+fn test_search_matrix() {
+    assert_eq!(
+        Solution::search_matrix(
+            vec![vec![1, 3, 5, 7], vec![10, 11, 16, 20], vec![23, 30, 34, 50]],
+            51
+        ),
+        true
+    )
+}

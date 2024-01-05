@@ -509,3 +509,19 @@ impl Solution {
         piles.len() as i32
     }
 }
+
+impl Solution {
+    pub fn search_matrix(matrix: Vec<Vec<i32>>, target: i32) -> bool {
+        for row in matrix {
+            if row[0] <= target && row[row.len() - 1] >= target {
+                if let Ok(i) = row.binary_search(&target) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+        }
+
+        false
+    }
+}
