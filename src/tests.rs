@@ -461,3 +461,12 @@ fn test_search_matrix() {
         true
     )
 }
+
+// test min_eating_speed
+
+#[test]
+fn test_min_eating_speed() {
+    assert_eq!(Solution::min_eating_speed(vec![3, 6, 7, 11], 8), 4)
+    // [30,11,23,4,20]
+    // assert_eq!(Solution::min_eating_speed(vec![30, 11, 23, 4, 20], 5), 30)
+}
