@@ -557,7 +557,7 @@ impl Solution {
         let mut right = nums.len() - 1;
 
         while left < right {
-            let mid = left + (right - left) / 2;
+            let mid = (left + right) / 2;
 
             if nums[mid] > nums[right] {
                 left = mid + 1;
