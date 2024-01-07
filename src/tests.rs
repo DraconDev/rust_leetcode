@@ -470,3 +470,10 @@ fn test_min_eating_speed() {
     // [30,11,23,4,20]
     // assert_eq!(Solution::min_eating_speed(vec![30, 11, 23, 4, 20], 5), 30)
 }
+
+// test find_min
+
+#[test]
+fn test_find_min() {
+    assert_eq!(Solution::find_min(vec![3, 4, 5, 1, 2]), 1)
+}
