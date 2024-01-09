@@ -512,3 +512,31 @@ impl Solution {
         result
     }
 }
+
+impl Solution {
+    pub fn leaf_similar(
+        root1: Option<Rc<RefCell<TreeNode>>>,
+        root2: Option<Rc<RefCell<TreeNode>>>,
+    ) -> bool {
+        fn dfs(node: &Option<Rc<RefCell<TreeNode>>>, elems: &mut Vec<i32>) {
+            if let Some(node) = node {
+                let n = node.as_ref().borrow();
+                if n.left.is_none() && n.right.is_none() {
+                    elems.push(n.val);
+                } else {
+                    dfs(&n.left, elems);
+                    dfs(&n.right, elems);
+                }
+            }
+        }
+
+        let mut leaves1 = Vec::new();
+        dfs(&root1, &mut leaves1);
+
+        let mut leaves2 = Vec::new();
+        dfs(&root2, &mut leaves2);
+
+        leaves1 == leaves2
+        
+    }
+}

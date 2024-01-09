@@ -477,3 +477,16 @@ fn test_min_eating_speed() {
 fn test_find_min() {
     assert_eq!(Solution::find_min(vec![3, 4, 5, 1, 2]), 1)
 }
+
+// test leaf_similar
+
+#[test]
+fn test_leaf_similar() {
+    assert_eq!(
+        Solution::leaf_similar(
+            crate::leetcode::binary_tree::build_tree(),
+            crate::leetcode::binary_tree::build_tree()
+        ),
+        true
+    )
+}
