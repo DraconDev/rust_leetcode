@@ -530,13 +530,31 @@ impl Solution {
             }
         }
 
-        let mut leaves1 = Vec::new();
-        dfs(&root1, &mut leaves1);
+        let mut leaves = Vec::new();
+        dfs(&root1, &mut leaves);
 
-        let mut leaves2 = Vec::new();
-        dfs(&root2, &mut leaves2);
+        fn dfs2(node: &Option<Rc<RefCell<TreeNode>>>, index: &mut i32, leaves1: &Vec<i32>) -> bool {
+            if let Some(node) = node {
+                let n = node.as_ref().borrow();
+                if n.left.is_none() && n.right.is_none() {
+                    if leaves1[*index as usize] != n.val {
+                        return false;
+                    }
+                    *index += 1;
+                } else {
+                    if *index >= leaves1.len() as i32 {
+                        return false;
+                    }
+                    let left_check = dfs2(&n.left, index, leaves1);
+                    let right_check = dfs2(&n.right, index, leaves1);
 
-        leaves1 == leaves2
-        
+                    return left_check && right_check;
+                }
+            }
+            true
+        }
+
+        let mut index = 0;
+        dfs2(&root2, &mut index, &leaves)
     }
 }
