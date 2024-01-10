@@ -577,7 +577,7 @@ impl Solution {
         while left <= right {
             let mid: i32 = (left + right) / 2;
 
-            let sub_sorted = nums[left as usize] < nums[mid as usize];
+            let sub_sorted = nums[left as usize] <= nums[mid as usize];
 
             if nums[mid as usize] == target {
                 return mid;
