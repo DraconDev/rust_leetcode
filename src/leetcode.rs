@@ -574,10 +574,10 @@ impl Solution {
         let mut left = 0;
         let mut right = nums.len() - 1;
 
-        while left < right {
+        while left <= right {
             let mid: usize = (left + right) / 2;
 
-            let pivoted = nums[mid] > right as i32;
+            let pivoted = nums[mid] > nums[right];
             if nums[mid] == target {
                 return mid as i32;
             }
@@ -587,7 +587,6 @@ impl Solution {
                 } else {
                     left = mid + 1;
                 }
-                left = mid + 1;
             } else {
                 if pivoted {
                     left = mid + 1;
