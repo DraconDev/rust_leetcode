@@ -490,3 +490,10 @@ fn test_leaf_similar() {
         true
     )
 }
+
+// test search
+
+#[test]
+fn test_search() {
+    assert_eq!(Solution::search(vec![4, 5, 6, 7, 0, 1, 2], 0), 4)
+}
