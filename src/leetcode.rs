@@ -572,26 +572,28 @@ impl Solution {
 impl Solution {
     pub fn search(nums: Vec<i32>, target: i32) -> i32 {
         let mut left = 0;
-        let mut right = nums.len() - 1;
+        let mut right: i32 = nums.len() as i32 - 1;
 
         while left <= right {
-            let mid: usize = (left + right) / 2;
+            let mid: i32 = (left + right) / 2;
 
-            let pivoted = nums[mid] > nums[right];
-            if nums[mid] == target {
-                return mid as i32;
+            let sub_sorted = nums[left as usize] < nums[mid as usize];
+
+            if nums[mid as usize] == target {
+                return mid;
             }
-            if nums[mid] < target {
-                if pivoted {
-                    right = mid;
+
+            if sub_sorted {
+                if target >= nums[left as usize] && target < nums[mid as usize] {
+                    right = mid - 1;
                 } else {
                     left = mid + 1;
                 }
             } else {
-                if pivoted {
+                if nums[mid as usize] < target && target <= nums[right as usize] {
                     left = mid + 1;
                 } else {
-                    right = mid;
+                    right = mid - 1;
                 }
             }
         }

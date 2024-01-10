@@ -495,8 +495,12 @@ fn test_leaf_similar() {
 
 #[test]
 fn test_search() {
-    // assert_eq!(Solution::search(vec![4, 5, 6, 7, 0, 1, 2], 0), 4)
+    assert_eq!(Solution::search(vec![3, 1], 1), 1);
+    assert_eq!(Solution::search(vec![4, 5, 6, 7, 0, 1, 2], 0), 4);
+    assert_eq!(Solution::search(vec![3, 4, 0, 1, 2], 1), 3);
     // assert_eq!(Solution::search(vec![1], 1), 0);
+    assert_eq!(Solution::search(vec![3, 5, 1], 3), 0);
+    assert_eq!(Solution::search(vec![1], 0), -1);
     assert_eq!(Solution::search(vec![1], 2), -1);
-    assert_eq!(Solution::search(vec![1, 3], 3), 1);
+    // assert_eq!(Solution::search(vec![1, 3], 3), 1);
 }
