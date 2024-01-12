@@ -504,3 +504,13 @@ fn test_search() {
     assert_eq!(Solution::search(vec![1], 2), -1);
     // assert_eq!(Solution::search(vec![1, 3], 3), 1);
 }
+
+// test max_ancestor_diff
+
+// #[test]
+// fn test_max_ancestor_diff() {
+//     assert_eq!(
+//         Solution::max_ancestor_diff(crate::leetcode::binary_tree::build_tree(),),
+//         1
+//     )
+// }

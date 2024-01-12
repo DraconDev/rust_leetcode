@@ -558,3 +558,28 @@ impl Solution {
         dfs2(&root2, &mut index, &leaves)
     }
 }
+
+// impl Solution {
+//     pub fn dfs(root: &Option<Rc<RefCell<TreeNode>>>, max_number: i32, min_number: i32) -> i32 {
+//         match root {
+//             Some(root_ref) => {
+//                 let root_node = root_ref.borrow();
+//                 let value = root_node.val;
+
+//                 let max_number = max_number.max(value);
+//                 let min_number = min_number.min(value);
+
+//                 Self::dfs(&root_node.left, max_number, min_number).max(Self::dfs(
+//                     &root_node.right,
+//                     max_number,
+//                     min_number,
+//                 ))
+//             }
+//             None => max_number - min_number,
+//         }
+//     }
+
+//     pub fn max_ancestor_diff(root: Option<Rc<RefCell<TreeNode>>>) -> i32 {
+//         Self::dfs(&root, i32::MIN, i32::MAX)
+//     }
+// }
