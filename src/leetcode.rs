@@ -600,3 +600,23 @@ impl Solution {
         -1
     }
 }
+
+impl Solution {
+    pub fn halves_are_alike(s: String) -> bool {
+        let mut count_a = 0;
+        let mut count_b = 0;
+
+        for (i, c) in s.to_lowercase().chars().enumerate() {
+            if i < s.len() / 2 {
+                if c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u' {
+                    count_a += 1;
+                }
+            } else {
+                if c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u' {
+                    count_b += 1;
+                }
+            }
+        }
+        count_a == count_b
+    }
+}
